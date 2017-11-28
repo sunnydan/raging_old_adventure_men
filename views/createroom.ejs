@@ -1,43 +1,93 @@
 <head>
-
+    <script src="jquery/dist/jquery.min.js"></script>
+    <link href="styles/multiple-select.css" rel="stylesheet" />
+    <style>
+        #leftcolumn div {
+            margin-bottom: 1px;
+            margin-top: 1px;
+        }
+    </style>
 </head>
 
 <body style="overflow: hidden;">
-    <div style="display: flex; justify-content: space-around;">
-        <div style="display: flex; flex-direction: column; justify-content: space-between; margin-right: 5px;">
-            <div>
-                <div style="display: flex; justify-content: flex-start;">
-                    <a href="/">Back</a>
-                    <h1 style="margin: 0;">Room Creator</h1>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span>ID: 000</span>
-                    <input type="text" placeholder="Room Name">
-                </div>
-                <div style="display: flex; justify-content: space-around;">
-                    <button>Layer 1</button>
-                    <button>Layer 2</button>
-                    <button>Layer 3</button>
-                    <button>Layer 4</button>
-                </div>
-                <div style="display: flex; justify-content: space-around;">
-                    <input type="radio" name="tiletype" value="permeable">
-                    Permeable
-                    <input type="radio" name="tiletype" value="Solid">
-                    Solid
-                </div>
-                <canvas id="roomcanvas" style="border: solid black 1px; width: 256px; height: 256px;"></canvas>
-                <div style="display: flex; justify-content: space-around;">
-                    <button>Delete</button>
-                    <button>Clear</button>
-                    <button>Load</button>
-                    <button>Save</button>
-                    <button>Add</button>
-                </div>
+    <div id="leftcolumn" style="display: flex; justify-content: space-around;">
+        <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-right: 5px;">
+            <div style="display: flex; justify-content: flex-start;">
+                <a href="/">Back</a>
+                <h1 style="margin: 0;">Room Creator</h1>
             </div>
-            <div style="flex: 1; overflow-y: scroll; border: solid black 1px;">
+            <div style="display: flex; justify-content: space-between;">
+                <span>ID: 000</span>
+                <input type="text" placeholder="Room Name">
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                Layer:
+                <button>1</button>
+                <button>2</button>
+                <div title="Layers 1 & 2 will appear below the player, layers 3 & 4 will appear above the player" 
+                style="background: url(/resources/sprites/characters/roguelikeChar_transparent.png) 0px 0px no-repeat;
+                width: 16px;
+                height: 16px;"></div>
+                <button>3</button>
+                <button>4</button>
+                <button>Preview</button>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                Selected:
+                <canvas style="width: 16px; height: 16px; border: solid black 1px;"></canvas>
+                Tile Type:
+                <select id="tiletypes">
+                    <option value="">Permeable</option>
+                    <option value="">Solid</option>
+                </select>
+                <script src="scripts/multiple-select.js"></script>
+                <script>
+                    $('#tiletypes').multipleSelect({
+                        selectAll: false
+                    });
+                </script>
+            </div>
+            <canvas id="roomcanvas" style="border: solid black 1px; width: 256px; height: 256px;"></canvas>
+            <div style="display: flex; justify-content: space-around;">
+                <button style="width: 20%;">Undo</button>
+                <select style="align-self: center; width: 60%; text-align: center;">
+                    <option value="">North Type</option>
+                    <option value="">Castle</option>
+                    <option value="">Plains</option>
+                </select>
+                <button style="width: 20%;">Redo</button>
+            </div>
+            <div style="display: flex; justify-content: space-around;">
+                <select style="width: 50%; text-align: center;">
+                    <option value="">West Type</option>
+                    <option value="">Castle</option>
+                    <option value="">Plains</option>
+                </select>
+                <select style="width: 50%; text-align: center;">
+                    <option value="">East Type</option>
+                    <option value="">Castle</option>
+                    <option value="">Plains</option>
+                </select>
+            </div>
+            <div style="display: flex; justify-content: space-around;">
+                <button style="width: 20%;">Clear</button>
+                <select style="align-self: center; width: 60%; text-align: center;">
+                    <option value="">South Type</option>
+                    <option value="">Castle</option>
+                    <option value="">Plains</option>
+                </select>
+                <button style="width: 20%;">Fill</button>
+            </div>
+
+            <div style="display: flex; justify-content: space-around;">
+                <button>Delete</button>
+                <button>Load</button>
+                <button>Save</button>
+                <button>Add</button>
+            </div>
+            <select multiple="multiple" style="flex: 1; overflow-y: scroll; border: solid black 1px;">
                 <option>Room000</option>
-            </div>
+            </select>
         </div>
         <div id="images" style="height: 100%; overflow: auto; border: solid black 1px;">
             <img src="/resources/sprites/tiles/roguelikeSheet_transparent.png" alt="city">
