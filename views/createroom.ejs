@@ -1,0 +1,49 @@
+<head>
+
+</head>
+
+<body style="overflow: hidden;">
+    <div style="display: flex; justify-content: space-around;">
+        <div style="display: flex; flex-direction: column; justify-content: space-between; margin-right: 5px;">
+            <div>
+                <div style="display: flex; justify-content: flex-start;">
+                    <a href="/">Back</a>
+                    <h1 style="margin: 0;">Room Creator</h1>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>ID: 000</span>
+                    <input type="text" placeholder="Room Name">
+                </div>
+                <div style="display: flex; justify-content: space-around;">
+                    <button>Layer 1</button>
+                    <button>Layer 2</button>
+                    <button>Layer 3</button>
+                    <button>Layer 4</button>
+                </div>
+                <div style="display: flex; justify-content: space-around;">
+                    <input type="radio" name="tiletype" value="permeable">
+                    Permeable
+                    <input type="radio" name="tiletype" value="Solid">
+                    Solid
+                </div>
+                <canvas id="roomcanvas" style="border: solid black 1px; width: 256px; height: 256px;"></canvas>
+                <div style="display: flex; justify-content: space-around;">
+                    <button>Delete</button>
+                    <button>Clear</button>
+                    <button>Load</button>
+                    <button>Save</button>
+                    <button>Add</button>
+                </div>
+            </div>
+            <div style="flex: 1; overflow-y: scroll; border: solid black 1px;">
+                <option>Room000</option>
+            </div>
+        </div>
+        <div id="images" style="height: 100%; overflow: auto; border: solid black 1px;">
+            <img src="/resources/sprites/tiles/roguelikeSheet_transparent.png" alt="city">
+            <img src="/resources/sprites/tiles/roguelikeIndoor_transparent.png" alt="city">
+            <img src="/resources/sprites/tiles/roguelikeDungeon_transparent.png" alt="city">
+            <img src="/resources/sprites/tiles/roguelikeCity_transparent.png" alt="city">
+        </div>
+    </div>
+</body>

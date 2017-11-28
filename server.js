@@ -23,13 +23,15 @@ app.set('view engine', 'ejs');
 // mongoose.Promise = global.Promise;
 
 app.get('/', function(req, res) {
-    context = {};
-    if(req.session.errors) {
-        console.log("THERE ARE PROBLEMS");
-        context['errors'] = req.session.errors;
-        req.session.errors = undefined;
-    }
-    res.render('game', context);
+    res.render('mainmenu');
+})
+
+app.get('/game', function(req, res) {
+    res.render('game');
+})
+
+app.get('/createroom', function(req, res) {
+    res.render('createroom');
 })
 
 app.listen(8000, function() {
