@@ -1,0 +1,9 @@
+body {
+    overflow: hidden;
+    display: flex; 
+    justify-content: flex-start;
+}
+body div {
+    margin-bottom: 1px;
+    margin-top: 1px;
+}

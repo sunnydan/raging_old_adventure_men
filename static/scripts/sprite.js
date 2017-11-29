@@ -6,7 +6,7 @@ function Sprite(img, sx, sy, swidth, sheight) {
     this.width = swidth;
     this.height = sheight;
 
-    this.drawImage = (context, cx, cy, cwidth, cheight) => {
+    this.drawImage = (context, cx, cy) => {
         context.drawImage(this.imageObj, this.x, this.y, this.width, this.height, cx, cy, this.width, this.height);
     }
 

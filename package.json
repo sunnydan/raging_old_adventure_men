@@ -13,6 +13,8 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "jquery": "^3.2.1",
     "mongoose": "^4.13.4"
   }
 }

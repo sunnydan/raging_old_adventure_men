@@ -1,4 +1,5 @@
 function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap, spritesacross, spritesdown, ) {
+    this.ready = false;
     this.spritewidth = spritewidth;
     this.spriteheight = spriteheight;
     this.verticalgap = verticalgap;
@@ -17,8 +18,13 @@ function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap,
             }
         }
         this.ready = true;
-        if(citySheet && dungeonSheet && indoorSheet && rogueSheet) {
-            loadRooms();
+        if (citySheet.ready && dungeonSheet.ready && indoorSheet.ready && rogueSheet.ready) {
+            try {
+                loadRooms();
+            }
+            catch(err) {
+                makeAllSprites();
+            }
         }
     }
 
