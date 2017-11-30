@@ -1,5 +1,7 @@
 <head>
     <script src="jquery/dist/jquery.min.js"></script>
+    <script src="scripts/tile.js"></script>
+    <script src="scripts/room.js"></script>
     <script src="scripts/createroom.js"></script>
     <script src="scripts/sprite.js"></script>
     <script src="scripts/spritesheet.js"></script>
@@ -15,24 +17,25 @@
             <h1 style="margin: 0;">Room Creator</h1>
         </div>
         <div style="display: flex; justify-content: space-between;">
-            <span>ID: 000</span>
+            <span>ID:</span>
             <input type="text" placeholder="Room Name">
         </div>
         <div style="display: flex; justify-content: space-between;">
             Layer:
-            <button>1</button>
-            <button>2</button>
+            <button id="layer1" onclick="selectLayer(0)">1</button>
+            <button id="layer2" onclick="selectLayer(1)">2</button>
             <div title="Layers 1 & 2 will appear below the player, layers 3 & 4 will appear above the player" style="background: url(/resources/sprites/characters/roguelikeChar_transparent.png) 0px 0px no-repeat;
                 width: 16px;
                 height: 16px;"></div>
-            <button>3</button>
-            <button>4</button>
-            <button>Preview</button>
+            <button id="layer3" onclick="selectLayer(2)">3</button>
+            <button id="layer4" onclick="selectLayer(3)">4</button>
+            <button id="layerpreview" onclick="selectLayer('preview')">Preview</button>
         </div>
         <div style="display: flex; justify-content: space-between;">
             Selected:
             <canvas id="selectedtile" style="width: 16px; height: 16px; border: solid black 1px;" width="16" height="16"></canvas>
-            Tile Type:
+            <canvas id="selectedtile2" style="width: 16px; height: 16px; border: solid black 1px;" width="16" height="16"></canvas>
+            Properties:
             <select id="tiletypes">
                 <option value="">Permeable</option>
                 <option value="">Solid</option>
@@ -46,33 +49,18 @@
         </div>
         <canvas id="roomcanvas" style="border: solid black 1px; width: 256px; height: 256px;" width="256" height="256"></canvas>
         <div style="display: flex; justify-content: space-around;">
-            <button style="width: 20%;">Undo</button>
-            <select style="align-self: center; width: 60%; text-align: center;">
-                <option value="">North Type</option>
-                <option value="">Castle</option>
-                <option value="">Plains</option>
-            </select>
-            <button style="width: 20%;">Redo</button>
+            <button style="width: 10%;">↶</button>
+            <button style="width: 10%;">↷</button>
+            <input style="width: 60%; text-align: center;" type="text" placeholder="north type">
+            <button style="width: 20%;">Fetch</button>
         </div>
         <div style="display: flex; justify-content: space-around;">
-            <select style="width: 50%; text-align: center;">
-                <option value="">West Type</option>
-                <option value="">Castle</option>
-                <option value="">Plains</option>
-            </select>
-            <select style="width: 50%; text-align: center;">
-                <option value="">East Type</option>
-                <option value="">Castle</option>
-                <option value="">Plains</option>
-            </select>
+            <input style="width: 50%; text-align: center;" type="text" placeholder="west type">
+            <input style="width: 50%; text-align: center;" type="text" placeholder="east type">
         </div>
         <div style="display: flex; justify-content: space-around;">
             <button style="width: 20%;">Clear</button>
-            <select style="align-self: center; width: 60%; text-align: center;">
-                <option value="">South Type</option>
-                <option value="">Castle</option>
-                <option value="">Plains</option>
-            </select>
+            <input style="width: 60%; text-align: center;" type="text" placeholder="south type">
             <button style="width: 20%;">Fill</button>
         </div>
 
@@ -83,7 +71,6 @@
             <button>Add</button>
         </div>
         <select multiple="multiple" style="flex: 1; overflow-y: scroll; border: solid black 1px;">
-            <option>Room000</option>
         </select>
     </div>
     <div id="tilepickercontainer" style="overflow: auto; width: 100%; height: 99%; border: solid black 1px;">
