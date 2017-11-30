@@ -1,4 +1,8 @@
-Javascript Canvas webgame made by Daniel Hilla to buff out his resume.
+Roguelike game written in Javascript using the HTML5 canvas element.
 
--combines gameplay mechanics from Rogue, Kirby, and Katamari.
--uses sprites made by KennyNL
+Lead Developer: Daniel Hilla
+Physics & Mechanics Developer: Tony Morris
+Player stats & Equipment Developer: Matt Rodriguez
+DB guy: Sam Hebert
+
+Sprites made by Kenney.nl
