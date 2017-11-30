@@ -1,11 +1,12 @@
 <head>
     <script src="jquery/dist/jquery.min.js"></script>
-    <script src="scripts/tile.js"></script>
-    <script src="scripts/room.js"></script>
-    <script src="scripts/createroom.js"></script>
-    <script src="scripts/sprite.js"></script>
-    <script src="scripts/spritesheet.js"></script>
-    <script src="scripts/spritesheetloader.js"></script>
+    <script src="scripts/rooms/tile.js"></script>
+    <script src="scripts/rooms/undoredo.js"></script>
+    <script src="scripts/rooms/room.js"></script>
+    <script src="scripts/rooms/createroom.js"></script>
+    <script src="scripts/sprites/sprite.js"></script>
+    <script src="scripts/sprites/spritesheet.js"></script>
+    <script src="scripts/sprites/spritesheetloader.js"></script>
     <link href="styles/multiple-select.css" rel="stylesheet" />
     <link href="styles/createroom.css" rel="stylesheet" />
 </head>
@@ -40,28 +41,28 @@
                 <option value="">Permeable</option>
                 <option value="">Solid</option>
             </select>
-            <script src="scripts/multiple-select.js"></script>
+            <script src="scripts/rooms/multiple-select.js"></script>
             <script>
                 $('#tiletypes').multipleSelect({
                     selectAll: false
                 });
             </script>
         </div>
-        <canvas id="roomcanvas" style="border: solid black 1px; width: 256px; height: 256px;" width="256" height="256"></canvas>
+        <canvas id="roomcanvas" width="256" height="256"></canvas>
         <div style="display: flex; justify-content: space-around;">
-            <button style="width: 10%;">↶</button>
-            <button style="width: 10%;">↷</button>
+            <button id="undobtn">↶</button>
+            <button id="redobtn">↷</button>
             <input style="width: 60%; text-align: center;" type="text" placeholder="north type">
-            <button style="width: 20%;">Fetch</button>
+            <button id="fetchbtn" title="select a tile from the room view">Fetch</button>
         </div>
         <div style="display: flex; justify-content: space-around;">
             <input style="width: 50%; text-align: center;" type="text" placeholder="west type">
             <input style="width: 50%; text-align: center;" type="text" placeholder="east type">
         </div>
         <div style="display: flex; justify-content: space-around;">
-            <button style="width: 20%;">Clear</button>
+            <button id="clearbtn">Clear</button>
             <input style="width: 60%; text-align: center;" type="text" placeholder="south type">
-            <button style="width: 20%;">Fill</button>
+            <button id="fillbtn">Fill</button>
         </div>
 
         <div style="display: flex; justify-content: space-around;">

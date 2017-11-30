@@ -1,7 +1,7 @@
 function Room() {
     this.id;
     this.name = "";
-    this.author; //a user
+    this.user; //user who created the room
     this.rating = 0;
     this.tiles = [];
     this.northtype = "";
@@ -24,7 +24,3 @@ function Room() {
         drawRoom();
     }
 }
-
-var roomtypes = [
-
-];
