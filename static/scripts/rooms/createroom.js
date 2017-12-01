@@ -7,7 +7,6 @@ function loadSpriteSheetCanvas() {
     var currentproperties;
     var selectedSprite = allSprites[0][0];
     var selectedSprite2 = allSprites[5][0];
-    var fetchmode = false;
 
     var pickercanvas = document.getElementById("tilepicker");
     var pickerctx = pickercanvas.getContext("2d");
@@ -64,36 +63,69 @@ function loadSpriteSheetCanvas() {
 
     var mousedown = false;
     var downevent;
-    var undoredo = new UndoRedo();
+    var first = true;
+    var undoredo = null;
 
     roomcanvas.addEventListener('mousemove', function (e) { //MOUSE MOVE HANDLER
         if (mousedown) {
+            var tileX = Math.floor(e.layerX / 16);
+            var tileY = Math.floor(e.layerY / 16);
             if (downevent.which == 1) {
-
+                undoredo.newtiles[tileX][tileY] = new Tile(selectedSprite, currentproperties);
             } else if (downevent.which == 3) {
-                
+                undoredo.newtiles[tileX][tileY] = new Tile(selectedSprite2, currentproperties);
+            }
+            drawRoom();
+            for (let x = 0; x < 16; x++) {
+                for (let y = 0; y < 16; y++) {
+                    if (undoredo.newtiles[x][y] != null) {
+                        undoredo.newtiles[x][y].sprite.drawImage(roomctx, x * 16, y * 16)
+                    }
+                }
             }
         }
     });
 
     roomcanvas.addEventListener('mousedown', function (e) {
-        if (e.which == 1) {
-            if (fetchmode) {
+        if (fetchbtn.disabled) {
+            if (e.which == 1) {
                 pickTile("left", roomcanvas, e);
-            } else if (currentlayer != "preview") {
-                mousedown = true;
-                downevent = e;
+            } else if (e.which == 3) {
+                pickTile("right", roomcanvas, e);
+            }
+        } else if (currentlayer != "preview") {
+            if (!undoredo) {
+                undoredo = new UndoRedo();
+                undoredo.prev = null;
+                undoredo.layer = currentlayer;
+                for (let x = 0; x < 16; x++) {
+                    for (let y = 0; y < 16; y++) {
+                        undoredo.newtiles[x][y] = room.tiles[x][y][currentlayer];
+                    }
+                }
+            }
+            newundoredo = new UndoRedo();
+            newundoredo.setPrev(undoredo);
+            undoredo = newundoredo;
+            undoredo.layer = currentlayer;
+            var tileX = Math.floor(e.layerX / 16);
+            var tileY = Math.floor(e.layerY / 16);
+            if (e.which == 1) {
+                undoredo.newtiles[tileX][tileY] = new Tile(selectedSprite, currentproperties);
+            } else if (e.which == 3) {
+                undoredo.newtiles[tileX][tileY] = new Tile(selectedSprite2, currentproperties);
+            }
+            mousedown = true;
+            downevent = e;
+            let head = undoredo;
+            while(head) {
+                console.log(head);
+                head = head.prev;
             }
         }
     });
 
     roomcanvas.oncontextmenu = function (e) {
-        if (fetchmode) {
-            pickTile("right", roomcanvas, e);
-        } else if (currentlayer != "preview") {
-            mousedown = true;
-            downevent = e;
-        }
         return false;
     }
 
@@ -101,15 +133,9 @@ function loadSpriteSheetCanvas() {
         mousedown = false;
         undoredo.getOld(room);
         undoredo.useNew(room);
-        let newundoredo = new UndoRedo();
-        newundoredo.setNext(undoredo);
-        undoredo = newundoredo;
+        undobtn.disabled = false;
+        drawRoom();
     });
-
-    function paintTile(sprite, tileX, tileY) {
-        let tile = new Tile(sprite, null);
-        room.setTile(tile, tileX, tileY, currentlayer);
-    }
 
     pickercanvas.addEventListener('mousedown', function (e) {
         if (e.which == 1) {
@@ -186,7 +212,6 @@ function loadSpriteSheetCanvas() {
         for (let i = 0; i < 4; i++) {
             if (i != layer) {
                 let j = i + 1
-                console.log(j);
                 document.getElementById("layer" + j).disabled = false;
             }
         }
@@ -195,15 +220,50 @@ function loadSpriteSheetCanvas() {
     selectLayer(0);
 
     fetchbtn.addEventListener('mousedown', function (e) {
-        setFetch(!fetchmode);
+        setFetch(!fetchbtn.disabled);
     });
 
     function setFetch(state) {
-        fetchmode = state;
-        if (!fetchmode) {
-            fetchbtn.setAttribute("style", "color: black;");
-        } else {
+        fetchbtn.disabled = state;
+        if (fetchbtn.disabled) {
             fetchbtn.setAttribute("style", "color: grey;");
+        } else {
+            fetchbtn.setAttribute("style", "color: black;");
         }
     }
+
+    if (!undoredo || undoredo.prev == null) {
+        setBtnEnabled(undobtn, false);
+    }
+
+    undobtn.addEventListener('click', function (e) {
+        undoredo.useOld(room);
+        undoredo = undoredo.prev;
+        undoredo.useNew(room);
+        if (!undoredo.prev) {
+            setBtnEnabled(undobtn, false);
+        }
+        setBtnEnabled(redobtn, true);
+    });
+
+    if (!undoredo || undoredo.next == null) {
+        setBtnEnabled(redobtn, false);
+    }
+
+    redobtn.addEventListener('click', function (e) {
+        undoredo = undoredo.next;
+        undoredo.useNew(room);
+        if (!undoredo.next) {
+            setBtnEnabled(redobtn, false);
+        }
+        setBtnEnabled(undobtn, true);
+    });
+}
+
+function getBtnEnabled(btn) {
+    return !btn.disabled;
+}
+
+function setBtnEnabled(btn, enabled) {
+    btn.disabled = !enabled;
 }
