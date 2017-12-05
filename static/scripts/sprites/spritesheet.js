@@ -7,7 +7,8 @@ function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap,
     this.spritesacross = spritesacross;
     this.spritesdown = spritesdown;
     this.imageObj = new Image();
-    this.sprites = [];
+	this.sprites = [];
+	this.xml = [];
 
     this.imageObj.onload = () => {
         for (let x = 0; x < this.spritesacross; x++) {
@@ -28,5 +29,5 @@ function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap,
         }
     }
 
-    this.imageObj.src = src;
+	this.imageObj.src = src;
 }
