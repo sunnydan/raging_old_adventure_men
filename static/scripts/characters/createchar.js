@@ -112,12 +112,8 @@ function loadCharSheetCanvas() {
         var tileX = Math.floor((e.layerX) / 17);
         var tileY = Math.floor(e.layerY / 17);
         // console.log(`x:${e.layerX},y:${e.layerY}`)
-        console.log(`row:${tileX} column:${tileY}`)
-        
-        //old method
-        // selectedSprite = allSprites[tileX][tileY];
-        // selectedSprite.drawImage(tilectx, 0, 0);
-        
+        // console.log(`row:${tileX} column:${tileY}`)
+
         //Filter selection's layer
         //Bases: [0->3,0->1]
         console.log("Is torso?", (tileX > 5 && tileX < 18) && (tileY < 10))
@@ -176,10 +172,10 @@ function loadCharSheetCanvas() {
             }
         }//hair
         else if ((tileX > 27 && tileX < 32) && (tileY < 9)){//hat [28->31,0-8]
-            avatar.hair = allSprites[tileX][tileY];
+            avatar.hat = allSprites[tileX][tileY];
             tilectx = hat.getContext("2d");
             tilectx.clearRect(0, 0, 16, 16);
-            avatar.hair.drawImage(tilectx, 0, 0);
+            avatar.hat.drawImage(tilectx, 0, 0);
         }
         else if ((tileX > 32 && tileX < 41)&& (tileY < 9)) {//left [33-40,0-8]
             avatar.left = allSprites[tileX][tileY];
