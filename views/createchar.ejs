@@ -4,6 +4,7 @@
     <script src="scripts/rooms/room.js"></script>
     <script src="scripts/characters/createchar.js"></script>
     <script src="scripts/sprites/sprite.js"></script>
+    <script src="scripts/characters/avatar.js"></script>
     <script src="scripts/characters/charsheet.js"></script>
     <script src="scripts/characters/charloader.js"></script>
     <link href="styles/multiple-select.css" rel="stylesheet" />
@@ -30,6 +31,8 @@
                 <canvas id="pants" class="viewSelection" width="16" height="16"></canvas>
                 Boots:
                 <canvas id="boots" class="viewSelection" width="16" height="16"></canvas>
+                Hat:
+                <canvas id="hat" class="viewSelection" width="16" height="16"></canvas>
             </div>
             <div class="layers">
                 Torso:
@@ -39,36 +42,39 @@
                 Right:
                 <canvas id="right" class="viewSelection" width="16" height="16"></canvas>
             </div>
-            <button onclick="makeAvatar()">Make Avatar</button>
+            <button id="clear">Clear Avatar</button>
             
         </div>
         <canvas id="charcanvas" width="256" height="256"></canvas>
         
-        <script>
+        <!-- <script>
             function makeAvatar() {
                 console.log("Starting")
-                var hair = document.getElementById("hair");
-                var beard = document.getElementById("beard");
-                var pants = document.getElementById("pants");
-                var boots = document.getElementById("boots");
-                var torso = document.getElementById("torso");
-                var left = document.getElementById("left");
-                var right = document.getElementById("right");
-                var c = document.getElementById("charcanvas");
-                var ctx = c.getContext("2d");
-                ctx.clearRect(0,0,c.width,c.height)
-                ctx.drawImage(base, 0, 0);
-                ctx.drawImage(pants, 0, 0);
-                ctx.drawImage(boots, 0, 0)
-                ctx.drawImage(torso, 0, 0);
-                ctx.drawImage(hair, 0, 0);
-                ctx.drawImage(beard, 0, 0);
-                ctx.drawImage(left, 0, 0);
-                ctx.drawImage(right, 0, 0);
+                // var hair = document.getElementById("hair");
+                // var beard = document.getElementById("beard");
+                // var pants = document.getElementById("pants");
+                // var boots = document.getElementById("boots");
+                // var torso = document.getElementById("torso");
+                // var left = document.getElementById("left");
+                // var right = document.getElementById("right");
+                // var c = document.getElementById("charcanvas");
+                // var ctx = c.getContext("2d");
+                // ctx.clearRect(0,0,c.width,c.height)
+                // ctx.drawImage(base, 0, 0);
+                // ctx.drawImage(pants, 0, 0);
+                // ctx.drawImage(boots, 0, 0)
+                // ctx.drawImage(torso, 0, 0);
+                // ctx.drawImage(hair, 0, 0);
+                // ctx.drawImage(beard, 0, 0);
+                // ctx.drawImage(left, 0, 0);
+                // ctx.drawImage(right, 0, 0);
             }
-        </script>
+        </script> -->
     </div>
     <div id="tilepickercontainer" style="overflow: auto; width: 100%; height: 99%; border: solid black 1px;">
         <canvas id="tilepicker"></canvas>
     </div>
+    <!-- <div id="tilepickercontainer" style="overflow: auto; border: solid black 1px;">
+        <canvas id="tilepicker" style="overflow: auto; border: solid black 1px;"></canvas>
+    </div> -->
 </body>

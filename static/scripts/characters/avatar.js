@@ -1,14 +1,15 @@
-// function Avatar(base,pants,boots,torso,hair,beard,left,right){
-    //// Order of avatar generation
-//     var base=base;
-//     var pants=pants;
-//     var boots=boots;
-//     var torso=torso;
-//     var hair=hair;
-//     var beard=beard;
-//     var left=left;
-//     var right = right;
-// }
+function AvatarSprite() {
+    // Order of layers for avatar generation
+    this.base;
+    this.pants;
+    this.boots;
+    this.torso;
+    this.hair;
+    this.hat;
+    this.beard;
+    this.left;
+    this.right;
+}
 const races = ["elf", "hobbit", "human", "orc"]
 const gender = ["m", "f"]
 const hair_styles = ["short", "long", "fu_manchu", "default", "medium", "braid-left", "braid-right", "2braid", "bowl_stache", "topknot", "fro", "balding"]
