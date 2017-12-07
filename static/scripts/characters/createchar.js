@@ -37,69 +37,12 @@ function loadCharSheetCanvas() {
             Csprite.drawImage(pickerctx, x * (Csprite.width + 1) + 1, y * (Csprite.height + 1) + 1, Csprite.width, Csprite.height);
         }
     }
-    //Listen for a specific layer's click
-        //Base
-        base.addEventListener('mousedown', function (e) {
-            tilectx = base.getContext("2d")
-        })
-        //Hair
-        hair.addEventListener('mousedown', function (e) {
-            tilectx = hair.getContext("2d")
-        })
-        //hat
-        hat.addEventListener('mousedown', function (e) {
-            tilectx = hat.getContext("2d")
-        })
-        //Beard
-        beard.addEventListener('mousedown', function (e) {
-            tilectx = beard.getContext("2d")
-        })
-        //Pants
-        pants.addEventListener('mousedown', function (e) {
-            tilectx = pants.getContext("2d")
-        })
-        //Boots
-        boots.addEventListener('mousedown', function (e) {
-            tilectx = boots.getContext("2d")
-        })
-        //Torso
-        torso.addEventListener('mousedown', function (e) {
-            tilectx = torso.getContext("2d")
-        })
-        //Left
-        left.addEventListener('mousedown', function (e) {
-            tilectx = left.getContext("2d")
-        })
-        //Right
-        right.addEventListener('mousedown', function (e) {
-            tilectx = right.getContext("2d")
-        })
-
-    //using sprites from different layers, draw image in charcanvas
-    function makeAvatar() {
-        var ctx = charcanvas.getContext("2d");
-        ctx.clearRect(0, 0, charcanvas.width, charcanvas.height)
-        if(avatar.base) avatar.base.drawImage(ctx,0, 0);
-        if(avatar.pants) avatar.pants.drawImage(ctx, 0, 0);
-        if(avatar.boots) avatar.boots.drawImage(ctx, 0, 0)
-        if(avatar.torso) avatar.torso.drawImage(ctx, 0, 0);
-        if (avatar.hair) avatar.hair.drawImage(ctx, 0, 0);
-        if (avatar.hat) avatar.hat.drawImage(ctx, 0, 0);
-        if(avatar.beard) avatar.beard.drawImage(ctx, 0, 0);
-        if(avatar.left) avatar.left.drawImage(ctx,0, 0);
-        if(avatar.right) avatar.right.drawImage(ctx, 0, 0);
-    }
 
     //clear Avatar
     var clearbtn = document.getElementById("clear");
     clearbtn.addEventListener('mousedown', function (e) {
         avatar = new AvatarSprite();
     })
-
-    // function paintTile(sprite, tileX, tileY) {
-    //     let tile = new Tile(sprite, null);
-    //     room.setTile(tile, tileX, tileY, currentlayer);
-    // }
 
     pickercanvas.addEventListener('mousedown', function (e) {
         if (e.which == 1) {
@@ -112,7 +55,7 @@ function loadCharSheetCanvas() {
         var tileX = Math.floor((e.layerX) / 17);
         var tileY = Math.floor(e.layerY / 17);
         // console.log(`x:${e.layerX},y:${e.layerY}`)
-        // console.log(`row:${tileX} column:${tileY}`)
+        console.log(`row:${tileX} column:${tileY}`)
 
         //Filter selection's layer
         //Bases: [0->3,0->1]
@@ -200,6 +143,6 @@ function loadCharSheetCanvas() {
         }
         //Draw new Avatar
         console.log(avatar)
-        makeAvatar()
+        avatar.makeAvatar(charcanvas)
     }
 }

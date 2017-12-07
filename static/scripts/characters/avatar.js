@@ -9,23 +9,50 @@ function AvatarSprite() {
     this.beard;
     this.left;
     this.right;
+    this.makeAvatar = (location)=>{
+        var ctx = location.getContext("2d");
+        //DEPRECATED: code for player layer at this location does HERE
+        ctx.clearRect(0, 0, location.width, location.height)
+        if (this.base) this.base.drawImage(ctx, 0, 0);
+        if (this.pants) this.pants.drawImage(ctx, 0, 0);
+        if (this.boots) this.boots.drawImage(ctx, 0, 0)
+        if (this.torso) this.torso.drawImage(ctx, 0, 0);
+        if (this.hair) this.hair.drawImage(ctx, 0, 0);
+        if (this.hat) this.hat.drawImage(ctx, 0, 0);
+        if (this.beard) this.beard.drawImage(ctx, 0, 0);
+        if (this.left) this.left.drawImage(ctx, 0, 0);
+        if (this.right) this.right.drawImage(ctx, 0, 0);
+    }
 }
 const races = ["elf", "hobbit", "human", "orc"]
-const gender = ["m", "f"]
+const gender = ["male", "female"]
 const hair_styles = ["short", "long", "fu_manchu", "default", "medium", "braid-left", "braid-right", "2braid", "bowl_stache", "topknot", "fro", "balding"]
 const hair_colors = ["d_brown", "l_brown", "blonde", "black", "white"]
-const bases=[
-    { race: "elf", gender: "m" ,location:[0,0]},
-    { race: "elf", gender: "f" ,location:[0,1]},
-    { race: "hobbit", gender: "m" ,location:[1,0]},
-    { race: "hobbit", gender: "f" ,location:[1,1]},
-    { race: "human", gender: "m" ,location:[2,0]},
-    { race: "human", gender: "f" ,location:[2,1]},
-    { race: "orc", gender: "m" ,location:[3,0]},
-    { race: "orc", gender: "f" ,location:[3,1]}
+const bases = [
+    { race: "elf", gender: "male", location: [0, 0] },
+    { race: "elf", gender: "female", location: [0, 1] },
+    { race: "hobbit", gender: "male", location: [1, 0] },
+    { race: "hobbit", gender: "female", location: [1, 1] },
+    { race: "human", gender: "male", location: [2, 0] },
+    { race: "human", gender: "female", location: [2, 1] },
+    { race: "orc", gender: "male", location: [3, 0] },
+    { race: "orc", gender: "female", location: [3, 1] }
 ]
+// const bases=[
+//     {style:"", color:"", location:[]}
+// ]
 
 class Avatar {
+    // //Unchangeables
+    // this.race;
+    // this.gender;
+    // this.hair;
+    // this.hair_color;
+    // this.beard;
+    //Equipped
+
+
+
     constructor(race, gender, hair, hair_color, beard = "") {
         this.race = race;
         this.gender = gender;
@@ -39,7 +66,7 @@ class Avatar {
     setBase() {
         //Validate options are present
         for(let i=0;i<bases.length;i++){
-            if (this.race===bases[i].race&&this.gender==bases[i].gender){
+            if (this.race === bases[i].race && this.gender == bases[i].gender) {
                 console.log(bases[i].location)
                 //
             }
