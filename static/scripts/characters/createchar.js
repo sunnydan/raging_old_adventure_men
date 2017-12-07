@@ -189,7 +189,7 @@ function loadCharSheetCanvas() {
             tilectx.clearRect(0, 0, 16, 16);
             avatar.right.drawImage(tilectx, 0, 0);
         }
-        else if ((tileX > 51 && tileX < 54)){
+        else if ((tileX > 51 && tileX < 54) && (tileY < 5)){
             avatar.left = undefined;
             tilectx = left.getContext("2d");
             tilectx.clearRect(0, 0, 16, 16);
