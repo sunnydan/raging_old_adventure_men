@@ -34,6 +34,11 @@ app.get('/createroom', function(req, res) {
     res.render('createroom');
 })
 
+app.get('/createchar', function (req, res) {
+    res.render('createchar');
+})
+
+
 app.listen(8000, function() {
     console.log("listening on port 8000");
 });

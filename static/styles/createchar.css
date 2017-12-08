@@ -1,0 +1,31 @@
+body {
+    overflow: hidden;
+    display: flex; 
+    justify-content: flex-start;
+}
+body div {
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+#undobtn, #redobtn {
+    width: 10%;
+}
+#fetchbtn, #clearbtn, #fillbtn {
+    width: 20%;
+}
+#charcanvas {
+    align-self: center; 
+    border: solid black 1px; 
+    width: 150px; 
+    height: 150px;
+}
+.layers{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.viewSelection{
+    width: 16px; 
+    height: 16px; 
+    border: solid black 1px;
+}
