@@ -19,7 +19,7 @@
 
 <body>
     <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-right: 5px;">
-        <div style="display: flex; justify-content: flex-start;">
+        <div style="display: flex; justify-content: space-between;">
             <a href="/">Back</a>
             <h1 style="margin: 0;">Room Creator</h1>
         </div>
@@ -39,9 +39,10 @@
             <button id="layerpreview" onclick="selectLayer('preview')">Preview</button>
         </div>
         <div style="display: flex; justify-content: space-between;">
-            Selected:
-            <canvas id="selectedtile" style="width: 16px; height: 16px; border: solid black 1px;" width="16" height="16"></canvas>
-            <canvas id="selectedtile2" style="width: 16px; height: 16px; border: solid black 1px;" width="16" height="16"></canvas>
+            <span title="Use left, middle, or right click to select tiles.">Selected: </span>
+            <canvas class="selectedtile" id="selectedtile1" width="16" height="16px"></canvas>
+            <canvas class="selectedtile" id="selectedtile2" width="16" height="16"></canvas>
+            <canvas class="selectedtile" id="selectedtile3" width="16" height="16"></canvas>
             Properties:
             <select id="tiletypes">
                 <option value="">Permeable</option>
@@ -56,26 +57,29 @@
         </div>
         <canvas id="roomcanvas" width="256" height="256"></canvas>
         <div style="display: flex; justify-content: space-around;">
-            <button id="undobtn">↶</button>
-            <button id="redobtn">↷</button>
+            <button title="Undo" id="undobtn"><</button>
+            <button title="Redo" id="redobtn">></button>
             <input style="width: 60%; text-align: center;" type="text" placeholder="north type">
-            <button id="fetchbtn" title="select a tile from the room view">Fetch</button>
+            <button id="fetchbtn" title="Selects a tile from the room view.">Fetch</button>
         </div>
         <div style="display: flex; justify-content: space-around;">
             <input style="width: 50%; text-align: center;" type="text" placeholder="west type">
             <input style="width: 50%; text-align: center;" type="text" placeholder="east type">
         </div>
         <div style="display: flex; justify-content: space-around;">
-            <button id="clearbtn">Clear</button>
+            <button style="color: red;" title="Clears all layers to white." id="resetbtn">Reset</button>
             <input style="width: 60%; text-align: center;" type="text" placeholder="south type">
-            <button id="fillbtn">Fill</button>
+            <button title="Fills whole layer with selected tile" id="fillbtn">Fill</button>
         </div>
 
         <div style="display: flex; justify-content: space-around;">
-            <button>Delete</button>
-            <button>Load</button>
-            <button>Save</button>
-            <button>Add</button>
+            <button style="color: red;" id="deletebtn">Delete</button>
+            <button id="loadbtn">Load</button>
+            <button style="color: blue;" id="savebtn">Save</button>
+            <button style="color: blue;" id="addbtn">Add</button>
+        </div>
+        <div>
+            <input style="width: 100%;" type="text" placeholder="Search">
         </div>
         <select multiple="multiple" style="flex: 1; overflow-y: scroll; border: solid black 1px;">
         </select>
