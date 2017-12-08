@@ -1,3 +1,11 @@
+@font-face {
+    font-family: KenneyPixel;
+    src:url("/resources/fonts/Kenney Pixel.ttf");
+}
+body, input, button {
+    font-family: KenneyPixel;
+    font-size: 1em;
+}
 body {
     overflow: hidden;
     display: flex; 
@@ -18,4 +26,9 @@ body div {
     border: solid black 1px; 
     width: 256px; 
     height: 256px;
+}
+.selectedtile {
+    width: 16px; 
+    height: 16px; 
+    border: solid black 1px;
 }
