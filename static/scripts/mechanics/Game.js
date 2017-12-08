@@ -8,7 +8,7 @@ class Game{
 	}
 
 	start(){
-		new Spr(rogueSheet,0,6,128,128);
+		new Sprite(rogueSheet,0,6,128,128);
 
 		let pl = new Player(rogueSheet,0,5,0,0);
 		pl.x = 256;

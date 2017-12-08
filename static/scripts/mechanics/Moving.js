@@ -1,4 +1,4 @@
-class Moving extends Spr{
+class Moving extends Sprite{
 	constructor(sheet, xInd, yInd, x, y){
 		super(sheet, xInd, yInd, x, y);
 		this.xV=0;

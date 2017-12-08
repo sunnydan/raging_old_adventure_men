@@ -1,7 +1,7 @@
-class Spr extends Base{
+class Sprite extends Base{
 	constructor(sheet,xInd,yInd,x,y){
-		// if(!sheet){console.log("Invalid SpriteSheet: "+sheet);}
-		// if(!sheet.sprites[xInd][yInd]){console.log("Non-existant sprite index: ["+xInd+"]"+"["+yInd+"]"+" in sheet: "+sheet); return;}
+		if(!sheet){console.log("Invalid SpriteSheet: "+sheet);}
+		if(!sheet.sprites[xInd][yInd]){console.log("Non-existant sprite index: ["+xInd+"]"+"["+yInd+"]"+" in sheet: "+sheet); return;}
 
 		super(x,y,0,0,"#ff0000",true); // DEBUG 
 		this.img=sheet.imageObj;
