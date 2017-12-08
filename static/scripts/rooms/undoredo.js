@@ -1,6 +1,6 @@
 function UndoRedo() {
     this.layer = -1;
-    this.oldtiles = []
+    this.oldtiles = [];
     this.newtiles = [];
     this.next = null;
     this.prev = null;
@@ -17,8 +17,8 @@ function UndoRedo() {
     this.getOld = (room) => {
         for (let x = 0; x < 16; x++) {
             for (let y = 0; y < 16; y++) {
-                if (this.newtiles[x][y] != null) {
-                    this.oldtiles[x][y] = room.tiles[x][y][this.layer];
+                if (newtiles[x][y] != null) {
+                    oldtiles[x][y] = room.tiles[x][y][layer];
                 }
             }
         }
@@ -27,8 +27,8 @@ function UndoRedo() {
     this.useOld = (room) => {
         for (let x = 0; x < 16; x++) {
             for (let y = 0; y < 16; y++) {
-                if (this.oldtiles[x][y] != null) {
-                    room.setTile(this.oldtiles[x][y], x, y, this.layer);
+                if (oldtiles[x][y] != null) {
+                    room.setTile(oldtiles[x][y], x, y, this.layer);
                 }
             }
         }
@@ -37,15 +37,15 @@ function UndoRedo() {
     this.useNew = (room) => {
         for (let x = 0; x < 16; x++) {
             for (let y = 0; y < 16; y++) {
-                if (this.newtiles[x][y] != null) {
-                    room.setTile(this.newtiles[x][y], x, y, this.layer);
+                if (newtiles[x][y] != null) {
+                    room.setTile(newtiles[x][y], x, y, this.layer);
                 }
             }
         }
     }
 
-    this.setPrev = (prevundoredo) => {
-        this.prev = prevundoredo;
-        prevundoredo.next = this;
+    this.setNext = (nextundoredo) => {
+        this.next = nextundoredo;
+        nextundoredo.prev = this;
     }
 }
