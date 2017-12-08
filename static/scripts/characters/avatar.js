@@ -13,15 +13,15 @@ function AvatarSprite() {
         var ctx = location.getContext("2d");
         //DEPRECATED: code for player layer at this location does HERE
         ctx.clearRect(0, 0, location.width, location.height)
-        if (this.base) this.base.drawImage(ctx, 0, 0);
-        if (this.pants) this.pants.drawImage(ctx, 0, 0);
-        if (this.boots) this.boots.drawImage(ctx, 0, 0)
-        if (this.torso) this.torso.drawImage(ctx, 0, 0);
-        if (this.hair) this.hair.drawImage(ctx, 0, 0);
-        if (this.hat) this.hat.drawImage(ctx, 0, 0);
-        if (this.beard) this.beard.drawImage(ctx, 0, 0);
-        if (this.left) this.left.drawImage(ctx, 0, 0);
-        if (this.right) this.right.drawImage(ctx, 0, 0);
+        if (this.base) this.base.render(ctx);
+        if (this.pants) this.pants.render(ctx);
+        if (this.boots) this.boots.render(ctx);
+        if (this.torso) this.torso.render(ctx);
+        if (this.hair) this.hair.render(ctx);
+        if (this.hat) this.hat.render(ctx);
+        if (this.beard) this.beard.render(ctx);
+        if (this.left) this.left.render(ctx);
+        if (this.right) this.right.render(ctx);
     }
 }
 const races = ["elf", "hobbit", "human", "orc"]

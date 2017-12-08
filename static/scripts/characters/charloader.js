@@ -24,7 +24,13 @@ window.onload = () => {
 }
 
 function makeCharSprites() {
-    allSprites = charSheet.sprites;
+    allSprites = [];
+    for (let x = 0; x < charSheet.sprites.length; x++) {
+        allSprites.push([]);
+        for (let y = 0; y < charSheet.sprites[x].length; y++) {
+            allSprites[x].push(new Sprite(charSheet, x, y, null, null));
+        }
+    }
     // console.log(allSprites[0][0])
     //Races: [0->1,0->3]
     //Gender: 
