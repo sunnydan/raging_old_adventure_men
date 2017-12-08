@@ -63,9 +63,7 @@ function loadCharSheetCanvas() {
 
         //Filter selection's layer
         //Bases: [0->3,0->1]
-        console.log("Is torso?", (tileX > 5 && tileX < 18) && (tileY < 10))
         if(tileX<2 && tileY<4){
-            console.log("Base layer")
             avatar.base = allSprites[tileX][tileY];
             avatar.base.x = 0;
             avatar.base.y = 0;
