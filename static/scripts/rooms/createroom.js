@@ -16,11 +16,15 @@ function loadSpriteSheetCanvas() {
 
     var tilecanvas = document.getElementById("selectedtile");
     var tilectx = tilecanvas.getContext("2d");
-    selectedSprite.drawImage(tilectx, 0, 0);
+    selectedSprite.x = 0;
+    selectedSprite.y = 0;
+    selectedSprite.render(tilectx);
 
     var tilecanvas2 = document.getElementById("selectedtile2");
     var tilectx2 = tilecanvas2.getContext("2d");;
-    selectedSprite2.drawImage(tilectx2, 0, 0);
+    selectedSprite2.x = 0;
+    selectedSprite2.y = 0;
+    selectedSprite2.render(tilectx2);
 
     var roomcanvas = document.getElementById("roomcanvas");
     var roomctx = roomcanvas.getContext("2d");
@@ -34,7 +38,9 @@ function loadSpriteSheetCanvas() {
     for (let x = 0; x < allSprites.length; x++) {
         for (let y = 0; y < allSprites[x].length; y++) {
             Csprite = allSprites[x][y];
-            Csprite.drawImage(pickerctx, x * (Csprite.width + 1) + 1, y * (Csprite.height + 1) + 1, Csprite.width, Csprite.height);
+            Csprite.x = x * (Csprite.w + 1) + 1;
+            Csprite.y = y * (Csprite.h + 1) + 1;
+            Csprite.render(pickerctx);
         }
     }
 
@@ -158,7 +164,9 @@ function loadSpriteSheetCanvas() {
             for (let x = 0; x < 16; x++) {
                 for (let y = 0; y < 16; y++) {
                     for (let z = 0; z < 4; z++) {
-                        room.tiles[x][y][z].sprite.drawImage(roomctx, x * 16, y * 16)
+                        room.tiles[x][y][z].sprite.x = x*16;
+                        room.tiles[x][y][z].sprite.y = y*16;
+                        room.tiles[x][y][z].sprite.render(roomctx);
                     }
                 }
             }
@@ -166,8 +174,9 @@ function loadSpriteSheetCanvas() {
         else {
             for (let x = 0; x < 16; x++) {
                 for (let y = 0; y < 16; y++) {
-                    let ti = room.tiles[x][y][currentlayer];
-                    ti.sprite.drawImage(roomctx, x * 16, y * 16);
+                    room.tiles[x][y][currentlayer].sprite.x = x*16;
+                    room.tiles[x][y][currentlayer].sprite.y = y*16;
+                    room.tiles[x][y][currentlayer].sprite.render(roomctx);
                 }
             }
         }
@@ -186,7 +195,6 @@ function loadSpriteSheetCanvas() {
         for (let i = 0; i < 4; i++) {
             if (i != layer) {
                 let j = i + 1
-                console.log(j);
                 document.getElementById("layer" + j).disabled = false;
             }
         }

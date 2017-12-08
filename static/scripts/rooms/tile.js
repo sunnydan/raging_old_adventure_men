@@ -1,4 +1,4 @@
-function Tile(_sprite = rogueSheet.sprites[0][5], _properties = ['permeable']) {
+function Tile(_sprite = new Sprite(rogueSheet, 0, 5, null, null), _properties = ['permeable']) {
     this.sprite = _sprite;
     this.properties = _properties;
 }

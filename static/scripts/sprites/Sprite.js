@@ -3,12 +3,12 @@ class Sprite extends Base{
 		if(!sheet){console.log("Invalid SpriteSheet: "+sheet);}
 		if(!sheet.sprites[xInd][yInd]){console.log("Non-existant sprite index: ["+xInd+"]"+"["+yInd+"]"+" in sheet: "+sheet); return;}
 
-		super(x,y,0,0,"#ff0000",true); // DEBUG 
+		super(x,y,0,0,"#ff0000", false); // DEBUG 
 		this.img=sheet.imageObj;
 		this.w=sheet.sprites[xInd][yInd].w;
 		this.h=sheet.sprites[xInd][yInd].h;
-		this.cX = sheet.sprites[xInd][yInd].cY; //Crop X and Y from spritesheet.
-		this.cY=sheet.sprites[xInd][yInd].cX;
+		this.cX = sheet.sprites[xInd][yInd].cX; //Crop X and Y from spritesheet.
+		this.cY=sheet.sprites[xInd][yInd].cY;
 	}
 
 	setImage(sheet,xInd,yInd){

@@ -15,7 +15,9 @@ function loadCharSheetCanvas() {
 
     var base = document.getElementById("base");
     var tilectx = base.getContext("2d");
-    selectedSprite.drawImage(tilectx, 0, 0, 16, 16);
+    selectedSprite.x = 0;
+    selectedSprite.y = 0;
+    selectedSprite.render(tilectx);
 
     var hair = document.getElementById("hair");
     var hat = document.getElementById("hat");
@@ -33,8 +35,10 @@ function loadCharSheetCanvas() {
     //Draw all sprites by all charsprites
     for (let x = 0; x < allSprites.length; x++) {
         for (let y = 0; y < allSprites[x].length; y++) {
-            let Csprite = allSprites[x][y];
-            Csprite.drawImage(pickerctx, x * (Csprite.width + 1) + 1, y * (Csprite.height + 1) + 1, Csprite.width, Csprite.height);
+            Csprite = allSprites[x][y];
+            Csprite.x = x * (Csprite.w + 1) + 1;
+            Csprite.y = y * (Csprite.h + 1) + 1;
+            Csprite.render(pickerctx);
         }
     }
 
