@@ -1,13 +1,11 @@
-let timers = [];
-
 var util = {
-	AABB(a, b){
+	AABB(a,b){
 		return a.x < b.x + b.w &&
+		a.x + a.w > b.x &&
 		a.y < b.y + b.h &&
-		b.x < a.x + a.w &&
-		b.y < a.y + a.h
+		a.y + a.h > b.y;	
 	},
-	
+
 	loadXML(file,cb){ // file:str,tags:arr,cb:function
 		let xml = new XMLHttpRequest();
 		xml.onreadystatechange = function(){
@@ -18,7 +16,6 @@ var util = {
 		xml.open("GET",file,true);
 		xml.send();
 	},
-	
 		
 	getTime(){
 		return new Date().getTime()/1000.0;

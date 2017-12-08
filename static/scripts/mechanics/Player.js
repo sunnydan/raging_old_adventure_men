@@ -1,43 +1,43 @@
-function Player(){
-	let player = new Moving("/resources/sprites/characters/alienBeige.png",0,0,PLAYER_SHEET);
-	player.input = new Input();
-
-	player.animate = function(){
-		if(player.xDir == 0 && player.yDir == 0){
-			player.play(0,0,false);
-		}else if(player.xDir == 1){
-			player.play(9,10,false);
-		}else if(player.xDir == -1){
-			player.play(9,10,true);
-		} else if (player.yDir == 1) {
-			player.play(1, 2, false);
-		} else if (player.yDir == -1) {
-			player.play(3,4,false);
-		}
-	}
-
-	player.move = function(delta){		
-		if(player.input.isDown("a") && player.xVel > -player.cap){
-			player.xVel -= player.acc*delta;
-			player.xDir = -1;
-		}else if (player.input.isDown("d") && player.xVel < player.cap){
-			player.xVel += player.acc*delta;
-			player.xDir = 1;
-		} else if (!player.input.isDown("d") && !player.input.isDown("a")){
-			player.xDir = 0;
-		}
+class Player extends NPC{
+	constructor(sheet, xInd, yInd, x, y){
+		super(sheet, xInd, yInd, x, y);
 		
-		if (player.input.isDown("w") && player.yVel > -player.cap) {
-			player.yVel -= player.acc*delta;
-			player.yDir = 1;
-		}else if (player.input.isDown("s") && player.yVel < player.cap) {
-			player.yVel += player.acc*delta;
-			player.yDir = -1;
-		} else if (!player.input.isDown("w") && !player.input.isDown("s")){
-			player.yDir = 0;
-		}
+		this.fireDelay = .25;
+		this.cur = util.getTime();
 	}
 
-	return player;
+	move(dt){
+		if(input.keyDown("a")){
+			this.dir = DIR_LEFT;
+		}else if(input.keyDown("d")){
+			this.dir = DIR_RIGHT;
+		}
+
+		if(input.keyDown("w")){
+			this.dir = DIR_UP;
+		}else if(input.keyDown("s")){
+			this.dir = DIR_DOWN;
+		}
+
+		if (!input.keyDown("w") && !input.keyDown("s") && !input.keyDown("a") && !input.keyDown("d")){
+			this.dir = DIR_IDLE;
+		}
+
+		if(input.keyDown(" ")){
+			if(util.getTime()-this.cur >= this.fireDelay){
+				this.cur = util.getTime();
+
+				let p = new Projectile(
+					rogueSheet,
+					0,
+					1,
+					this.x,
+					this.y
+				);
+
+				p.dir = this.lastDir;
+				p.owner=this;
+			}
+		}
+	}
 }
-entities.valid["Player"] = Player;

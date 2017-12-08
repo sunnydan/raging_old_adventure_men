@@ -1,38 +1,42 @@
-function Moving(sheet,x,y,xml){
-	let sprite = new Sprite(sheet,x,y,xml);
-	// sprite.setXML(PLAYER_SHEET);
-	sprite.acc  = .15;
-	sprite.friction = .30;
-	sprite.cap  = 1; // Max Accel
-	sprite.xVel = 0;
-	sprite.yVel = 0;
-
-	sprite.animate = function(){
-
+class Moving extends Spr{
+	constructor(sheet, xInd, yInd, x, y){
+		super(sheet, xInd, yInd, x, y);
+		this.xV=0;
+		this.yV=0;
+		this.friction=.25;
+		this.acc=.25;
+		this.cap=.25;
+		this.dir=DIR_RIGHT;
+		this.lastDir=this.dir;
 	}
 
-	sprite.tick = function(delta){
-		sprite.doMove(delta);
-	}
-
-	// Movement callback
-	sprite.move = function(dt){
-
-	}
-
-	sprite.collide = function(dt){
+	move(dt){
 		
 	}
 
-	sprite.doMove = function(dt){
-		sprite.x += sprite.xVel;
-		sprite.y += sprite.yVel;
+	tick(dt){
+		this.x += this.xV;
+		this.y += this.yV;
 
-		sprite.xVel *= (1-Math.min(sprite.friction,1));
-		sprite.yVel *= (1-Math.min(sprite.friction,1));
+		this.xV *= (1 - Math.min(this.friction, 1));
+		this.yV *= (1 - Math.min(this.friction, 1));
+		
+		if(this.dir == DIR_LEFT && this.xV > -this.cap){
+			this.xV -= this.acc;
+			this.lastDir=this.dir;
+		}else if(this.dir == DIR_RIGHT && this.xV < this.cap){
+			this.xV += this.acc;
+			this.lastDir = this.dir;
+		}
 
-		sprite.move(dt);
+		if (this.dir == DIR_UP && this.yV > -this.cap) {
+			this.yV -= this.acc;
+			this.lastDir = this.dir;
+		}else if(this.dir == DIR_DOWN && this.yV < this.cap) {
+			this.yV += this.acc;
+			this.lastDir = this.dir;
+		}
+
+		this.move(dt);
 	}
-
-	return sprite;
 }

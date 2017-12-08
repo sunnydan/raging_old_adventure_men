@@ -1,51 +1,35 @@
-function Game(){
-	const canvas = document.getElementById("gamecanvas");
-	canvas.width = 512;
-	canvas.height = 512;
-	// rooms[0].drawRoom(ctx);
-	
-    const ctx = canvas.getContext("2d");
-	const FPS_CAP = 1000.0/60.0;
-	
-	let id;
-	let prev = Date.now();
-	let cur;
-	let delta;
-
-	function start(){
-		let player = entities.create("Player");
-
-		run();
+class Game{
+	constructor(w,h){
+		this.id=0;
+		this.before=0;
+		this.after=0;
+		this.delta=0;
+		this.window=new Window(w,h);
 	}
 
-	function stop(){
-		cancelAnimationFrame(id);
+	start(){
+		new Spr(rogueSheet,0,6,128,128);
+
+		let pl = new Player(rogueSheet,0,5,0,0);
+		pl.x = 256;
+		pl.y = 256;
+
+		this.run(this);
 	}
 
-	function clear(){
-		ctx.fillStyle = "rgb(0,0,0)";
-		ctx.fillRect(0,0,canvas.width,canvas.height);
+	stop(){
+		cancelAnimationFrame(this.id);
 	}
 
-	function run(){
-		let cur = Date.now();
-		let delta = cur - prev;
+	run(self){
+		this.after=Date.now();
+		this.delta=this.after-this.before;
+		this.window.tick(this.delta);
+		this.window.render();
+		this.before=Date.now();
 
-		tick(delta);
-		render();
-
-		prev = Date.now();
-		id = requestAnimationFrame(run);
+		requestAnimationFrame(()=>{
+			this.run(self);
+		});
 	}
-
-	function tick(delta){
-		entities.tick(delta);
-	}
-
-	function render(){
-		clear();
-		entities.render(ctx);
-	}
-
-	start();
 }
