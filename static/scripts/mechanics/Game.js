@@ -8,11 +8,10 @@ class Game{
 	}
 
 	start(){
-		new Sprite(rogueSheet,6,0,128,128);
+		let tile = new Tile(rogueSheet,1,0,128,128);
+		let pl   = new Player(rogueSheet,7,0,0,0);
 
-		let pl = new Player(rogueSheet,5,0,0,0);
-		pl.x = 256;
-		pl.y = 256;
+		console.log(entities.active);
 
 		this.run(this);
 	}
@@ -22,11 +21,11 @@ class Game{
 	}
 
 	run(self){
-		this.after=Date.now();
+		this.after=util.getTime();
 		this.delta=this.after-this.before;
 		this.window.tick(this.delta);
 		this.window.render();
-		this.before=Date.now();
+		this.before=util.getTime();
 
 		requestAnimationFrame(()=>{
 			this.run(self);
