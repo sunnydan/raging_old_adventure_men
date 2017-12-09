@@ -4,6 +4,11 @@ class Player extends NPC{
 		
 		this.fireDelay = .25;
 		this.cur = util.getTime();
+		this.interacting = false;
+	}
+
+	interact(){
+
 	}
 
 	move(dt){
@@ -24,22 +29,21 @@ class Player extends NPC{
 		}
 
 		//TODO: Mouse Based / Directional aiming. This was here for testing.
+	}
 
-		// if(input.keyDown(" ")){
-		// 	if(util.getTime()-this.cur >= this.fireDelay){
-		// 		this.cur = util.getTime();
+	interact(){
+		if(input.keyDown("e") && !this.interacting){
+			// TODO: fire nearest entity's interact() event.
+			let ents = util.findInRange(
+				{x:this.x,y:this.y},
+				this.interactRange
+			);
 
-		// 		let p = new Projectile(
-		// 			rogueSheet,
-		// 			0,
-		// 			1,
-		// 			this.x,
-		// 			this.y
-		// 		);
+			console.log(ents);
 
-		// 		p.dir = this.lastDir;
-		// 		p.owner=this;
-		// 	}
-		// }
+			this.interacting = true;
+		}else if(!input.keyDown("e") && this.interacting){
+			this.interacting = false;
+		}
 	}
 }
