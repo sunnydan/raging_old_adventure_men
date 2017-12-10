@@ -1,22 +1,18 @@
 class NPC extends Moving{
 	constructor(sheet, xInd, yInd, x, y){
 		super(sheet, xInd, yInd, x, y);
-		this.interactRange = 45
+		this.interactRange = 45;
 		this.canInteract   = true;
-		this.dialog = [
-			"What drives your rage?",
-			"What are you angry about?",
-			"Did someone's dog defecate on your lawn?",
-			"Did you defecate on your lawn?"
-		];
+		this.dialogue      = new Dialogue(this,"Hello");
 	}
+
 	interact(){
 
 	}
+	
 	// Passes the entity that fired the event that interacted with it
 	onInteract(ent){
-		// TODO: Render a dialog box, displaying the NPC's dialog.
-		console.log(this.dialog,ent);
+		this.dialogue.toggle();
 	}
 
 	animate(c){

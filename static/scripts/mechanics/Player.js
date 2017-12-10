@@ -1,7 +1,6 @@
 class Player extends NPC{
 	constructor(sheet, xInd, yInd, x, y){
 		super(sheet, xInd, yInd, x, y);
-		
 		this.fireDelay = .25;
 		this.cur = util.getTime();
 		this.interacting = false;

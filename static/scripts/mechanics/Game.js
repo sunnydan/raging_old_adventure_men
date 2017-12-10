@@ -9,8 +9,8 @@ class Game{
 
 	start(){
 		// let tile = new Tile(rogueSheet,1,0,128,128);
-		let npc  = new NPC(rogueSheet,8,0,64,64);
-		let pl   = new Player(rogueSheet,7,0,0,0);
+		let npc  = new NPC(rogueSheet,8,0,480,480);
+		let pl   = new Player(rogueSheet,7,0,512,512);
 
 		// console.log(entities.active);
 
