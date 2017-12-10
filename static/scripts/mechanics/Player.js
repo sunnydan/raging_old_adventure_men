@@ -33,13 +33,12 @@ class Player extends NPC{
 
 	interact(){
 		if(input.keyDown("e") && !this.interacting){
-			// TODO: fire nearest entity's interact() event.
-			let ents = util.findInRange(
-				{x:this.x,y:this.y},
+			let ent = util.findClosestInRange(
+				this,
 				this.interactRange
 			);
 
-			console.log(ents);
+			if(ent != null && ent.canInteract) ent.onInteract(this); // Fire NPC's interact event
 
 			this.interacting = true;
 		}else if(!input.keyDown("e") && this.interacting){

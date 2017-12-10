@@ -17,36 +17,50 @@ var util = {
 	distanceY(a,b){
 		return ((a.y - b.y) ^ 2) ^ 0.5;
 	},
-
-	findInRange(vec,range) { // O(N)
+	// Finds all entities surrounding an entity.
+	findInRange(e,range) { // O(N)
 		let ents = [];
-		// appends distance attribute to reduce runtime in findClosestInRange.
+
 		for (let i = 0; i < entities.active.length; i++) {
 			let ent = entities.active[i];
-			let d = util.distance(vec, ent);
-			if (d < 0) d = -d;
-			if (d <= range) ents.push(ent);
+
+			if(ent.id != e.id){ // Exclude supplied entity from search.
+				let d = util.distance(e, ent);
+				if (d < 0) d = -d;
+				if (d <= range) ents.push(ent);
+			}
 		}
 
 		return ents;
 	},
+	// Finds the closest entity to another entity.
+	findClosestInRange(e,range){ // O(N^2)
+		let ents = util.findInRange(e,range);
+		if(ents.length < 1){return null;}
+		let min  = util.distance(ents[0],e);
+		let ent  = ents[0];
 
-	// findClosestInRange(vec,range){ // O(N^2)
-	// 	let ents  = util.findInRange(vec,range);
+		if(min < 0) min = -min;
 
-	// 	for(let i=0;i<ents.length;i++){
-	// 		let j = ents[i];
-	// 	}
+		for(let i=1;i<ents.length;i++){
+			let dist = util.distance(ents[i],e);
+			if(dist < 0) dist = -dist;
 
-	// 	return ent;
-	// },
+			if(min > dist){
+				min = dist;
+				ent = ents[i];
+			}
+		}
 
-	findByClassInRange(vec,range,cls){ // O(N)
+		return ent;
+	},
+	// Finds all entities surrounding an entity by class.
+	findByClassInRange(e,range,cls){ // O(N)
 		let ents = [];
 
 		for (let i = 0; i < entities.active.length; i++) {
 			let ent = entities.active[i];
-			let d = util.distance(vec, ent);
+			let d = util.distance(e, ent);
 			if(d < 0) d = -d;
 			if(d <= range && ent.class == cls) ents.push(ent);
 		}
