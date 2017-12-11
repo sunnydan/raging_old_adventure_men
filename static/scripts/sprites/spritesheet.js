@@ -34,7 +34,8 @@ function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap,
         this.ready = true;
         if (citySheet.ready && dungeonSheet.ready && indoorSheet.ready && rogueSheet.ready) {
             try {
-                loadRooms();
+                let game = new Game(512, 512);
+                game.start();
             }
             catch (err) {
                 makeAllSprites();

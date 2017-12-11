@@ -17,27 +17,13 @@ app.set('view engine', 'ejs');
 // var mongoose = require('mongoose');
 // This is how we connect to the mongodb database using mongoose -- "basic_mongoose" is the name of
 //   our db in mongodb -- this should match the name of the db you are going to use for your project.
-//mongoose.connect('mongodb://localhost/basic_mongoose');
+// mongoose.connect('mongodb://localhost/basic_mongoose');
 
 // Use native promises
 // mongoose.Promise = global.Promise;
 
-app.get('/', function(req, res) {
-    res.render('mainmenu');
-})
-
-app.get('/game', function(req, res) {
-    res.render('game');
-})
-
-app.get('/createroom', function(req, res) {
-    res.render('createroom');
-})
-
-app.get('/createchar', function (req, res) {
-    res.render('createchar');
-})
-
+var routesSetter = require('./server/config/routes.js');
+routesSetter(app);
 
 app.listen(8000, function() {
     console.log("listening on port 8000");
