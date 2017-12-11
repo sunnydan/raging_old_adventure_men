@@ -7,10 +7,10 @@ class Dialogue extends Base{
 		this.solid=false;
 		this.movable=false;
 		this.owner=npc;
-		this.w=128;
-		this.h=48;
+		this.w=0;
+		this.h=0;
 		this.oldW=128;
-		this.oldH=48;
+		this.oldH=52;
 		this.color="#ffffff";
 		this.dialogue=dialogue;
 		entities.active.push(this);
@@ -25,6 +25,8 @@ class Dialogue extends Base{
 	}
 
 	hide(){
+		this.w=this.oldW;
+		this.h=this.oldH;
 		this.isVisible=false;
 	}
 
@@ -45,14 +47,16 @@ class Dialogue extends Base{
 		this.x=this.owner.x+this.owner.w/2-this.w/2;
 		this.y=this.owner.y-this.owner.h-this.h;
 
-		if(this.isVisible){
-			if(this.w != this.oldW) this.w += 8;
-			if(this.h != this.oldH) this.h += 4;
-			if(this.w != this.oldW && this.h != this.oldH)this.isAnimating=true;
+		if(this.isVisible && this.w != this.oldW && this.h != this.oldH){
+			this.w += 8;
+			this.h += 4;
+			this.isAnimating=true;
+		}else if(!this.isVisible && this.w !=0 && this.h != 0){
+			this.w -= 8;
+			this.h -= 4;
+			this.isAnimating=true;
 		}else{
-			if(this.w != 0)this.w -= 8;
-			if(this.h != 0)this.h -= 4;
-			if(this.w == 0 && this.h == 0) this.isAnimating=false;
+			this.isAnimating=false;
 		}
 	}
 
@@ -63,10 +67,12 @@ class Dialogue extends Base{
 			c.fillStyle=this.color;
 			c.fillRect(this.x,this.y,this.w,this.h);
 
-			c.font="16px arial";
-			c.fillStyle="#000000";
-			c.textAlign="center";
-			c.fillText(this.dialogue,this.x+this.w/2,this.y+this.h/2);
+			if(!this.isAnimating){
+				c.font="16px arial";
+				c.fillStyle="#000000";
+
+				util.textWrap(c,this.dialogue,this.x+2,this.y+16,this.oldW,16);
+			}
 		}
 	}
 }

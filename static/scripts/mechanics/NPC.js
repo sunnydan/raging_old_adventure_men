@@ -3,7 +3,7 @@ class NPC extends Moving{
 		super(sheet, xInd, yInd, x, y);
 		this.interactRange = 45;
 		this.canInteract   = true;
-		this.dialogue      = new Dialogue(this,"Hello");
+		this.dialogue      = new Dialogue(this,"What are you raging about?");
 	}
 
 	interact(){
