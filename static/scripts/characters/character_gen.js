@@ -9,7 +9,7 @@ function loadCharSheetCanvas() {
     
     var charcanvas = document.getElementById("charcanvas");
     var tilectx = charcanvas.getContext("2d");
-    avatar.avatarSprite.makeAvatar(charcanvas);
+    avatar.avatarSprite.makeAvatar(tilectx);
 
 
     //clear Avatar

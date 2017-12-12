@@ -29,8 +29,6 @@ function loadCharSheetCanvas() {
     var right = document.getElementById("right");
     var charcanvas = document.getElementById("charcanvas");
 
-    var makeAvatar;
-
     // pickerctx.drawImage(Charsheet.imageObj,0,0)
     //Draw all sprites by all charsprites
     for (let x = 0; x < allSprites.length; x++) {
@@ -169,6 +167,7 @@ function loadCharSheetCanvas() {
         }
         //Draw new Avatar
         console.log(avatar)
-        avatar.makeAvatar(charcanvas)
+        let ctx = charcanvas.getContext("2d");
+        avatar.makeAvatar(ctx)
     }
 }

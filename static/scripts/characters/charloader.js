@@ -31,10 +31,5 @@ function makeCharSprites() {
             allSprites[x].push(new Sprite(charSheet, x, y, null, null));
         }
     }
-    // console.log(allSprites[0][0])
-    //Races: [0->1,0->3]
-    //Gender: 
-        //male: [0,0->3]
-        //female: [1,0->3]
     loadCharSheetCanvas();
 }
