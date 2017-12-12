@@ -1,8 +1,13 @@
 // Create an Express App
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 var session = require("express-session");
 app.use(session({secret: "iwannabeagamedeveloper"}));
+//Custom Modules
+var avatarLib = require("./avatar.js")
 
 // Require path
 var path = require('path');
@@ -23,7 +28,11 @@ app.set('view engine', 'ejs');
 // mongoose.Promise = global.Promise;
 
 app.get('/', function(req, res) {
-    res.render('mainmenu');
+    if(req.session.avatar) {
+        console.log(req.session.avatar)
+        res.render('mainmenu',{avatar:JSON.stringify(req.session.avatar)});
+    }
+    else res.render('mainmenu',{avatar:null});
 })
 
 app.get('/game', function(req, res) {
@@ -38,20 +47,34 @@ app.get('/createchar', function (req, res) {
     res.render('createchar');
 })
 app.get('/charagen',function(req,res){
-    // let avatar = new Avatar();
-    const races = ["elf", "hobbit", "human", "orc"]
-    const gender = ["male", "female"]
-    const hair_styles = ["short", "long", "fu_manchu", "default", "medium", "braid-left", "braid-right", "2braid", "bowl_stache", "topknot", "fro", "balding"]
-    const hair_colors = ["d_brown", "l_brown", "blonde", "black", "white"]
-    const beards = ["full", "stache", "ancient", "elder"]
-
+    // let avatar = new avatarLib.Avatar();
+    // console.log(avatar);
     res.render('new_player',{
-        races:races,
-        gender:gender,
-        hair_styles:hair_styles,
-        hair_colors:hair_colors,
-        beards:beards
+        races:avatarLib.races,
+        gender:avatarLib.gender,
+        hair_styles:avatarLib.hair_styles,
+        hair_colors:avatarLib.hair_colors,
+        beards:avatarLib.beards
     });
+})
+app.post('/avatars',function(req,res){
+    // console.log((JSON.parse(req.body.allSprites)))
+    let avatar = {
+        reason:req.body.name,
+        race:req.body.race,
+        gender:req.body.gender,
+        hair_style: req.body.hair_style,
+        hair_color:req.body.hair_color,
+        beard:req.body.beard
+    };
+    // // console.log(avatar);
+    // res.redirect('/charagen');
+    req.session.avatar = avatar//(JSON.parse(avatar))
+    res.redirect('/')
+})
+app.get("/clearAvatar",function(req,res){
+    req.session.avatar=null;
+    res.redirect('/')
 })
 
 

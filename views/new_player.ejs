@@ -34,63 +34,59 @@
         </div>
         <div id="selections">
             <form action="/avatars" method="post">
-                <table>
-                    <!-- Reason for being angry(Name) -->
-                    <tr>
-                        <td>Your reason for being angry</td>
-                        <td><input type="text" name="name"></td>
-                    </tr>
-                </table>
-            <!-- Gender -->
-            <p>
-                Race:
-                <select name="race" id="race">
-                    <!-- <option value="undefined">Select</option> -->
-                    <%for(let i=0;i<races.length;i++){%>
-                        <option value="<%=races[i]%>"><%=races[i]%></option>
-                    <%}%>
-                </select>
-                Gender:
-                <select name="gender" id="gender">
-                    <!-- <option value="undefined">Select</option> -->
-                    <%for(let i=0;i<gender.length;i++){%>
-                        <option value="<%=gender[i]%>"><%=gender[i]%></option>
-                    <%}%>
-                </select>
-            </p>
-            <p>
-            <!-- Hair Color -->
-                Hair Color:
-                <select name="hair_color" id="hair_color">
-                    <!-- <option value="undefined">Select</option> -->
-                    <%for(let i=0;i<hair_colors.length;i++){%>
-                        <option value="<%=hair_colors[i]%>"><%=hair_colors[i]%></option>
-                    <%}%>
-                </select>
-                <!-- Hair Style -->
-                Hair Style:
-                <select name="hair_style" id="hair_style">
-                    <!-- <option value="undefined">Select</option> -->
-                    <%for(let i=0;i<hair_styles.length;i++){%>
-                        <option value="<%=hair_styles[i]%>">
-                            <%=hair_styles[i]%>
-                        </option>
+                <p>Your reason for being angry
+                    <input type="text" name="name">
+                </p>
+                <!-- Gender -->
+                <p>
+                    Race:
+                    <select name="race">
+                        <!-- <option value="undefined">Select</option> -->
+                        <%for(let i=0;i<races.length;i++){%>
+                            <option value="<%=races[i]%>"><%=races[i]%></option>
                         <%}%>
-                </select>
-            </p>
-            <p>
-            <!-- Beard -->
-                Beard: 
-                <select name="beard" id="beard">
-                    <option value="undefined">Select</option>
-                    <%for(let i=0;i<beards.length;i++){%>
-                        <option value="<%=beards[i]%>"><%=beards[i]%></option>
-                    <%}%>
-                </select>
-            </p>
-            
+                    </select>
+                    Gender:
+                    <select name="gender">
+                        <!-- <option value="undefined">Select</option> -->
+                        <%for(let i=0;i<gender.length;i++){%>
+                            <option value="<%=gender[i]%>"><%=gender[i]%></option>
+                        <%}%>
+                    </select>
+                </p>
+                <p>
+                <!-- Hair Color -->
+                    Hair Color:
+                    <select name="hair_color">
+                        <!-- <option value="undefined">Select</option> -->
+                        <%for(let i=0;i<hair_colors.length;i++){%>
+                            <option value="<%=hair_colors[i]%>"><%=hair_colors[i]%></option>
+                        <%}%>
+                    </select>
+                    <!-- Hair Style -->
+                    Hair Style:
+                    <select name="hair_style">
+                        <!-- <option value="undefined">Select</option> -->
+                        <%for(let i=0;i<hair_styles.length;i++){%>
+                            <option value="<%=hair_styles[i]%>">
+                                <%=hair_styles[i]%>
+                            </option>
+                            <%}%>
+                    </select>
+                </p>
+                <p>
+                <!-- Beard -->
+                    Beard: 
+                    <select name="beard" id="beard">
+                        <option value="">Select</option>
+                        <%for(let i=0;i<beards.length;i++){%>
+                            <option value="<%=beards[i]%>"><%=beards[i]%></option>
+                        <%}%>
+                    </select>
+                </p>
+                <input type="hidden" name="allSprites" id="allSprites">
 
-            <!-- <input type="submit" value="Submit Form"> -->
+                <input type="submit" value="Submit Form">
             </form>
             <button id="preview">Print Avatar</button>
             <button id="clear">Clear Avatar</button>

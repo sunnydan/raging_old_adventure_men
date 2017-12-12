@@ -9,21 +9,23 @@ function AvatarSprite() {
     this.beard;
     this.left;
     this.right;
-    this.makeAvatar = (ctx)=>{
-        if (!(ctx instanceof CanvasRenderingContext2D)){console.log("Not a canvas rendering instance");return;}
+    this.makeAvatar = (ctx,x=0,y=0)=>{
+        if (!(ctx instanceof CanvasRenderingContext2D)){
+            console.log("Not a canvas rendering instance");return;
+        }
         // var ctx = location.getContext("2d");
         console.log(ctx instanceof CanvasRenderingContext2D)
         //DEPRECATED: code for player layer at this location does HERE
         ctx.clearRect(0, 0, location.width, location.height)
-        if (this.base) this.base.render(ctx);
-        if (this.pants) this.pants.render(ctx);
-        if (this.boots) this.boots.render(ctx);
-        if (this.torso) this.torso.render(ctx);
-        if (this.hair) this.hair.render(ctx);
-        if (this.hat) this.hat.render(ctx);
-        if (this.beard) this.beard.render(ctx);
-        if (this.left) this.left.render(ctx);
-        if (this.right) this.right.render(ctx);
+        if (this.base) this.base.render(ctx,x,y);
+        if (this.pants) this.pants.render(ctx,x,y);
+        if (this.boots) this.boots.render(ctx,x,y);
+        if (this.torso) this.torso.render(ctx,x,y);
+        if (this.hair) this.hair.render(ctx,x,y);
+        if (this.hat) this.hat.render(ctx,x,y);
+        if (this.beard) this.beard.render(ctx,x,y);
+        if (this.left) this.left.render(ctx,x,y);
+        if (this.right) this.right.render(ctx,x,y);
     }
 }
 
@@ -35,13 +37,13 @@ const beards = ["full", "stache", "ancient", "elder"]
 //Base locations
     const bases = [
         { race: "elf", gender: "male", x: 0, y: 0 },
-        { race: "elf", gender: "female", x: 0, y: 1 },
-        { race: "hobbit", gender: "male", x: 1, y: 0 },
+        { race: "elf", gender: "female", x: 1, y: 0 },
+        { race: "hobbit", gender: "male", x: 0, y: 1 },
         { race: "hobbit", gender: "female", x: 1, y: 1 },
-        { race: "human", gender: "male", x: 2, y: 0 },
-        { race: "human", gender: "female", x: 2, y: 1 },
-        { race: "orc", gender: "male", x: 3, y: 0 },
-        { race: "orc", gender: "female", x: 3, y: 1 }
+        { race: "human", gender: "male", x: 0, y: 2 },
+        { race: "human", gender: "female", x: 1, y: 2 },
+        { race: "orc", gender: "male", x: 0, y: 3 },
+        { race: "orc", gender: "female", x: 1, y: 3 }
     ]
 //Hair Layer locations
     const hair = [];
@@ -63,25 +65,23 @@ const beards = ["full", "stache", "ancient", "elder"]
     }
 
 //Beard Layer locations
-const beard_layer = [];
-startLoc = [19, 3];
-for (let col = 0; col < hair_colors.length; col++) {
-    if (col == 0 || col % 2 == 0) colorStart = [19, startLoc[1] + (4 * (col / 2))]
-    else colorStart = [23, startLoc[1] + ((col - 1) / 2) * 4]
-    for (let beard = 0; beard < beards.length; beard++) {
-        let obj = {};
-        obj.beard = beards[beard];
-        obj.color = hair_colors[col];
-        obj.x = colorStart[0] + beard
-        obj.y = colorStart[1]
-        beard_layer.push(obj);
+    const beard_layer = [];
+    startLoc = [19, 3];
+    for (let col = 0; col < hair_colors.length; col++) {
+        if (col == 0 || col % 2 == 0) colorStart = [19, startLoc[1] + (4 * (col / 2))]
+        else colorStart = [23, startLoc[1] + ((col - 1) / 2) * 4]
+        for (let beard = 0; beard < beards.length; beard++) {
+            let obj = {};
+            obj.beard = beards[beard];
+            obj.color = hair_colors[col];
+            obj.x = colorStart[0] + beard
+            obj.y = colorStart[1]
+            beard_layer.push(obj);
+        }
     }
-}
 
 class Avatar {
-    //Equippable Gear
-    
-    constructor(race = "elf", gender = "male", hair = "short", hair_color = "d_brown", beard = "elder") {
+    constructor(race = "elf", gender = "male", hair = "short", hair_color = "d_brown", beard = "") {
         this.race = race;
         this.gender = gender;
         this.hair_style = hair;
@@ -103,7 +103,7 @@ class Avatar {
         //Validate options are present
         for (let i = 0; i < bases.length; i++) {
             if (this.race === bases[i].race && this.gender == bases[i].gender) {
-                console.log(bases[i])
+                // console.log(bases[i])
                 this.avatarSprite.base = allSprites[bases[i].x][bases[i].y];//new Sprite(charSheet, bases[i].x, bases[i].y,0,0);
             }
         }
@@ -113,7 +113,7 @@ class Avatar {
         for (let i = 0; i < hair.length; i++) {
             if (this.hair_style === hair[i].style && this.hair_color == hair[i].color) {
                 this.avatarSprite.hair = allSprites[hair[i].x][hair[i].y];//new Sprite(charSheet, hair[i].x, hair[i].y,0,0);
-                console.log(hair[i])
+                // console.log(hair[i])
             }
         }
     }
@@ -122,7 +122,7 @@ class Avatar {
         for (let i = 0; i < beard_layer.length; i++) {
             if (this.beard === beard_layer[i].beard && this.hair_color == beard_layer[i].color) {
                 this.avatarSprite.beard = allSprites[beard_layer[i].x][beard_layer[i].y];//new Sprite(charSheet, beard_layer[i].x, beard_layer[i].y, 0, 0);
-                console.log(beard_layer[i])
+                // console.log(beard_layer[i])
             }
         }
     }
