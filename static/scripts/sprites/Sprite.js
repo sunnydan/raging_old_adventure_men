@@ -27,10 +27,10 @@ class Sprite extends Base{
 
 	}
 
-	render(c){
+	render(c,x=this.x,y=this.y){
 		this.animate(c);
 
-		c.drawImage(this.img,this.cX,this.cY,this.w,this.h,this.x,this.y,this.w,this.h);
+		c.drawImage(this.img,this.cX,this.cY,this.w,this.h,x,y,this.w,this.h);
 		
 		super.render(c);
 	}
