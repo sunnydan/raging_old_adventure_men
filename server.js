@@ -37,6 +37,22 @@ app.get('/createroom', function(req, res) {
 app.get('/createchar', function (req, res) {
     res.render('createchar');
 })
+app.get('/charagen',function(req,res){
+    // let avatar = new Avatar();
+    const races = ["elf", "hobbit", "human", "orc"]
+    const gender = ["male", "female"]
+    const hair_styles = ["short", "long", "fu_manchu", "default", "medium", "braid-left", "braid-right", "2braid", "bowl_stache", "topknot", "fro", "balding"]
+    const hair_colors = ["d_brown", "l_brown", "blonde", "black", "white"]
+    const beards = ["full", "stache", "ancient", "elder"]
+
+    res.render('new_player',{
+        races:races,
+        gender:gender,
+        hair_styles:hair_styles,
+        hair_colors:hair_colors,
+        beards:beards
+    });
+})
 
 
 app.listen(8000, function() {
