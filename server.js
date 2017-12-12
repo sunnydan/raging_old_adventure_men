@@ -47,8 +47,6 @@ app.get('/createchar', function (req, res) {
     res.render('createchar');
 })
 app.get('/charagen',function(req,res){
-    // let avatar = new avatarLib.Avatar();
-    // console.log(avatar);
     res.render('new_player',{
         races:avatarLib.races,
         gender:avatarLib.gender,
@@ -58,7 +56,6 @@ app.get('/charagen',function(req,res){
     });
 })
 app.post('/avatars',function(req,res){
-    // console.log((JSON.parse(req.body.allSprites)))
     let avatar = {
         reason:req.body.name,
         race:req.body.race,
@@ -67,9 +64,7 @@ app.post('/avatars',function(req,res){
         hair_color:req.body.hair_color,
         beard:req.body.beard
     };
-    // // console.log(avatar);
-    // res.redirect('/charagen');
-    req.session.avatar = avatar//(JSON.parse(avatar))
+    req.session.avatar = avatar
     res.redirect('/')
 })
 app.get("/clearAvatar",function(req,res){

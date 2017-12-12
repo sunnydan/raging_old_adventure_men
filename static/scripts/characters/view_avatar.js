@@ -20,18 +20,3 @@ function loadCharSheetCanvas() {
     }
 
 }
-    
-    
-
-    // let hidden = document.getElementById("allSprites");
-    // console.log(JSON.stringify(allSprites));
-    // document.getElementById("allSprites").value = JSON.stringify(avatar);
-
-    // //clear Avatar
-    // var clearbtn = document.getElementById("clear");
-    // clearbtn.addEventListener('mousedown', function (e) {
-    //     avatar = new Avatar();
-    //     //change all dropdowns and inputs to undefined
-    // })
-
-// }
