@@ -1,6 +1,3 @@
-// var selectLayer;
-var drawRoom;
-
 function loadCharSheetCanvas() {
     var currentlayer;
     var currentproperties;
