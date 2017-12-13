@@ -10,6 +10,7 @@ function loadCharSheetCanvas() {
     
     var charcanvas = document.getElementById("charcanvas");
     var tilectx = charcanvas.getContext("2d");
+    //function to re-render the preview image
     function renderAvatar(){
         avatar.avatarSprite.makeAvatar(tilectx, 0, 0, charcanvas.width, charcanvas.height);
     }

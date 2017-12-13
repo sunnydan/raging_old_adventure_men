@@ -29,7 +29,7 @@ class Sprite extends Base{
 
 	render(c,x=this.x,y=this.y,newW=this.w,newH=this.h){
 		this.animate(c);
-
+		//allows location(x,y) and resizing (newW,newH), specifically when viewing the avatar
 		c.drawImage(this.img, this.cX, this.cY, this.w, this.h, x, y, newW, newH)
 		
 		super.render(c);

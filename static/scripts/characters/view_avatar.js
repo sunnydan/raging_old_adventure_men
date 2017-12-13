@@ -11,6 +11,7 @@ function loadCharSheetCanvas() {
         var avatar = new Avatar(input.race, input.gender, input.hair_style,input.hair_color,input.beard)
         var charcanvas = document.getElementById("charcanvas");
         var tilectx = charcanvas.getContext("2d");
+        //Uses new method to blow up the avatar chosen
         avatar.avatarSprite.makeAvatar(tilectx,0,0,charcanvas.width,charcanvas.height);
     }
     else{
