@@ -12,22 +12,26 @@ function loadCharSheetCanvas() {
     var tilectx = charcanvas.getContext("2d");
     avatar.avatarSprite.makeAvatar(tilectx);
 
+    var raceSelect = document.getElementById("race");
+    var genderSelect = document.getElementById("gender");
+    var styleSelect = document.getElementById("hair_style");
+    var colorSelect = document.getElementById("hair_color");
+    var beardSelect = document.getElementById("beard");
+
     //clear Avatar
     var clearbtn = document.getElementById("clear");
     clearbtn.addEventListener('mousedown', function (e) {
         avatar = new Avatar();
         //change all dropdowns and inputs to undefined
+        document.getElementById("race").selectedIndex="0";
+        document.getElementById("gender").selectedIndex="0";
+        document.getElementById("hair_style").selectedIndex="0";
+        document.getElementById("hair_color").selectedIndex="0";
+        document.getElementById("beard").selectedIndex="0";
+        avatar.avatarSprite.makeAvatar(tilectx);
     })
 
     //Update saved data AND preview image after changing one of the basic Appearance of the avatar
-    raceSelect = document.getElementById("race");
-    genderSelect = document.getElementById("gender");
-    styleSelect = document.getElementById("hair_style");
-    colorSelect = document.getElementById("hair_color");
-    beardSelect = document.getElementById("beard");
-    // console.log(document.getElementById("race").constructor.name);
-
-
     raceSelect.addEventListener('change', function (e) {
         console.log(typeof raceSelect)
         avatar.race = document.getElementById("race").value;
