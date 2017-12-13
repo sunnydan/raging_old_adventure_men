@@ -19,7 +19,7 @@ function loadCharSheetCanvas() {
         //change all dropdowns and inputs to undefined
     })
 
-    //Update previe after every source
+    //Update saved data AND preview image after changing one of the basic Appearance of the avatar
     raceSelect = document.getElementById("race");
     genderSelect = document.getElementById("gender");
     styleSelect = document.getElementById("hair_style");
@@ -27,9 +27,10 @@ function loadCharSheetCanvas() {
     beardSelect = document.getElementById("beard");
     // console.log(document.getElementById("race").constructor.name);
 
+
     raceSelect.addEventListener('change', function (e) {
         console.log(typeof raceSelect)
-        avatar.race = document.getElementById("race").value;//options[raceSelect.selectedIndex].value;
+        avatar.race = document.getElementById("race").value;
         avatar.setBaseLayer();
         avatar.avatarSprite.makeAvatar(tilectx);
         console.log("Change made, rewrite preview", avatar)
