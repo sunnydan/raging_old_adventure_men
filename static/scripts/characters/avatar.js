@@ -9,21 +9,21 @@ function AvatarSprite() {
     this.beard;
     this.left;
     this.right;
-    this.makeAvatar = (ctx,x=0,y=0)=>{
+    this.makeAvatar = (ctx, x = 0, y = 0, newW = allSprites[0][0].w, newH = allSprites[0][0].h)=>{
         if (!(ctx instanceof CanvasRenderingContext2D)){
             console.log("Not a canvas rendering instance");return;
         }
         //DEPRECATED: code for player layer at this location does HERE
         ctx.clearRect(0, 0, location.width, location.height)
-        if (this.base) this.base.render(ctx,x,y);
-        if (this.pants) this.pants.render(ctx,x,y);
-        if (this.boots) this.boots.render(ctx,x,y);
-        if (this.torso) this.torso.render(ctx,x,y);
-        if (this.hair) this.hair.render(ctx,x,y);
-        if (this.hat) this.hat.render(ctx,x,y);
-        if (this.beard) this.beard.render(ctx,x,y);
-        if (this.left) this.left.render(ctx,x,y);
-        if (this.right) this.right.render(ctx,x,y);
+        if (this.base) this.base.render(ctx,x,y,newW,newH);
+        if (this.pants) this.pants.render(ctx,x,y,newW,newH);
+        if (this.boots) this.boots.render(ctx,x,y,newW,newH);
+        if (this.torso) this.torso.render(ctx,x,y,newW,newH);
+        if (this.hair) this.hair.render(ctx,x,y,newW,newH);
+        if (this.hat) this.hat.render(ctx,x,y,newW,newH);
+        if (this.beard) this.beard.render(ctx,x,y,newW,newH);
+        if (this.left) this.left.render(ctx,x,y,newW,newH);
+        if (this.right) this.right.render(ctx,x,y,newW,newH);
     }
 }
 
