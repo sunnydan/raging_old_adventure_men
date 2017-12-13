@@ -1,4 +1,4 @@
-// const character = require("./characters.js");
+//used in static/script/characters/avatar.js AND server.js
 module.exports = {
     races:["elf", "hobbit", "human", "orc"],
     gender: ["male", "female"],

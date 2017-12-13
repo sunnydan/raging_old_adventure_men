@@ -12,10 +12,6 @@ function loadCharSheetCanvas() {
     var tilectx = charcanvas.getContext("2d");
     avatar.avatarSprite.makeAvatar(tilectx);
 
-    // let hidden = document.getElementById("allSprites");
-    // console.log(JSON.stringify(allSprites));
-    document.getElementById("allSprites").value = JSON.stringify(avatar);
-
     //clear Avatar
     var clearbtn = document.getElementById("clear");
     clearbtn.addEventListener('mousedown', function (e) {
@@ -23,13 +19,49 @@ function loadCharSheetCanvas() {
         //change all dropdowns and inputs to undefined
     })
 
-    // OPTIONS:
-    //1)
-        //Add listeners for each dropdown--on change?
-        //add change to saved avatar AND to image
-            //avatar property changes AND set[]Layer() is called
-    //2)
-        //Take all dropdowns and create a new Avatar with values
+    //Update previe after every source
+    raceSelect = document.getElementById("race");
+    genderSelect = document.getElementById("gender");
+    styleSelect = document.getElementById("hair_style");
+    colorSelect = document.getElementById("hair_color");
+    beardSelect = document.getElementById("beard");
+    // console.log(document.getElementById("race").constructor.name);
 
-
+    raceSelect.addEventListener('change', function (e) {
+        console.log(typeof raceSelect)
+        avatar.race = document.getElementById("race").value;//options[raceSelect.selectedIndex].value;
+        avatar.setBaseLayer();
+        avatar.avatarSprite.makeAvatar(tilectx);
+        console.log("Change made, rewrite preview", avatar)
+    })
+    //gender
+    genderSelect.addEventListener('change', function (e) {
+        avatar.gender = document.getElementById("gender").value;
+        avatar.setBaseLayer();
+        avatar.avatarSprite.makeAvatar(tilectx);
+        console.log("Change made, rewrite preview", avatar)
+    })
+    //style
+    styleSelect.addEventListener('change', function (e) {
+        avatar.hair_style = document.getElementById("hair_style").value;
+        avatar.setHairLayer();
+        avatar.avatarSprite.makeAvatar(tilectx);
+        console.log("Change made, rewrite preview", avatar)
+    })
+    //color
+    colorSelect.addEventListener('change', function (e) {
+        avatar.hair_color = document.getElementById("hair_color").value;
+        avatar.setHairLayer();
+        avatar.setBeardLayer();
+        avatar.avatarSprite.makeAvatar(tilectx);
+        console.log("Change made, rewrite preview", avatar)
+    })
+    //beard
+    beardSelect.addEventListener('change', function (e) {
+        avatar.beard = document.getElementById("beard").value;
+        if (avatar.beard.length==0){avatar.avatarSprite.beard=undefined;}
+        else avatar.setBeardLayer(); 
+        avatar.avatarSprite.makeAvatar(tilectx);
+        console.log("Change made, rewrite preview", avatar)
+    })
 }
