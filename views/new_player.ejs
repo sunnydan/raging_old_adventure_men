@@ -35,20 +35,18 @@
         <div id="selections">
             <form action="/avatars" method="post">
                 <p>Your reason for being angry
-                    <input type="text" name="name">
+                    <input type="text" name="name" id="name">
                 </p>
                 <!-- Gender -->
                 <p>
                     Race:
-                    <select name="race">
-                        <!-- <option value="undefined">Select</option> -->
+                    <select name="race" id="race">
                         <%for(let i=0;i<races.length;i++){%>
                             <option value="<%=races[i]%>"><%=races[i]%></option>
                         <%}%>
                     </select>
                     Gender:
-                    <select name="gender">
-                        <!-- <option value="undefined">Select</option> -->
+                    <select name="gender" id="gender">
                         <%for(let i=0;i<gender.length;i++){%>
                             <option value="<%=gender[i]%>"><%=gender[i]%></option>
                         <%}%>
@@ -57,15 +55,14 @@
                 <p>
                 <!-- Hair Color -->
                     Hair Color:
-                    <select name="hair_color">
-                        <!-- <option value="undefined">Select</option> -->
+                    <select name="hair_color" id="hair_color">
                         <%for(let i=0;i<hair_colors.length;i++){%>
                             <option value="<%=hair_colors[i]%>"><%=hair_colors[i]%></option>
                         <%}%>
                     </select>
                     <!-- Hair Style -->
                     Hair Style:
-                    <select name="hair_style">
+                    <select name="hair_style" id="hair_style">
                         <!-- <option value="undefined">Select</option> -->
                         <%for(let i=0;i<hair_styles.length;i++){%>
                             <option value="<%=hair_styles[i]%>">
