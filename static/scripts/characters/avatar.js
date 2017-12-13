@@ -13,8 +13,6 @@ function AvatarSprite() {
         if (!(ctx instanceof CanvasRenderingContext2D)){
             console.log("Not a canvas rendering instance");return;
         }
-        // var ctx = location.getContext("2d");
-        console.log(ctx instanceof CanvasRenderingContext2D)
         //DEPRECATED: code for player layer at this location does HERE
         ctx.clearRect(0, 0, location.width, location.height)
         if (this.base) this.base.render(ctx,x,y);
