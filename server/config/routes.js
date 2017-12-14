@@ -1,5 +1,6 @@
 // var mongoose = require('mongoose');
 var path = require('path');
+var session = require('express-session');
 // add models and controller vars
 
 module.exports = function(app){
