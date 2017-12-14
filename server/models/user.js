@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var uniqueVal = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
+var Room = require('./room');
+var Dungeon = require('./dungeon');
 var Schema = mongoose.Schema;
 
 var UserSchema = new mongoose.Schema({
@@ -12,8 +14,8 @@ var UserSchema = new mongoose.Schema({
         },
         message: 'Password and password confirmation must match'
     }},
-    _rooms: [{type: mongoose.Schema.Types.ObjectId, ref: 'room'}],
-    _dungeons: [{type: mongoose.Schema.Types.ObjectId, ref: 'dungeon'}],
+    _rooms: [{type: mongoose.Schema.Types.ObjectId, ref: 'Room'}],
+    _dungeons: [{type: mongoose.Schema.Types.ObjectId, ref: 'Dungeon'}],
     {timestamps:true});
     UserSchema.plugin(uniqueVal);
     UserSchema.methods.hash = function(password){
