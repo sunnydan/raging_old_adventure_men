@@ -48,6 +48,9 @@ function makeAllSprites() {
             allSprites[x].push(new Sprite(citySheet, x, y, null, null));
         }
     }
-
-    loadSpriteSheetCanvas();
+    try {
+        loadSpriteSheetCanvas();
+    } catch(err) {
+        console.log(err);
+    }
 }
