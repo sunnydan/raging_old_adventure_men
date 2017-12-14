@@ -1,8 +1,13 @@
 // Create an Express App
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 var session = require("express-session");
 app.use(session({secret: "iwannabeagamedeveloper"}));
+//Custom Modules
+var avatarLib = require("./avatarLib.js")
 
 // Require path
 var path = require('path');

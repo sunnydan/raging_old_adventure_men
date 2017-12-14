@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#main {
+    display: flex; 
+    justify-content: flex-start;
+}
+body div {
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+#clearbtn {
+    width: 20%;
+}
+#main div{
+    border: 1px solid black;
+    margin: 5px;
+}
+form div{
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid black;
+    margin: 4px;
+}
+#charcanvas {
+    align-self: center; 
+    border: solid black 1px; 
+    width: 256px; 
+    height: 256px;
+}

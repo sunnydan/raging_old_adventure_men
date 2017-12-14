@@ -1,3 +1,25 @@
+<head>
+    <title>Main Page</title>
+    <script src="scripts/mechanics/Base.js"></script>
+    <script src="scripts/mechanics/entities.js"></script>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="scripts/rooms/tile.js"></script>
+    <script src="scripts/rooms/room.js"></script>
+    <script src="scripts/sprites/sprite.js"></script>
+    <script src="scripts/characters/charloader.js"></script>
+    <script src="scripts/characters/charsheet.js"></script>
+    <script src="scripts/characters/view_avatar.js"></script>
+    <script src="scripts/characters/avatar.js"></script>
+    <link href="styles/multiple-select.css" rel="stylesheet" />
+    <link href="styles/createchar.css" rel="stylesheet" />
+</head>
+<p>
 <a href="/game">Play Game</a>
 <a href="/createroom">Create Room</a>
 <a href="/createchar">Create Character</a>
+<a href="/charagen">Character Generator</a>
+</p>
+<input type="hidden" name="avatar" id="avatar"  value="<%=avatar%>">
+<h1 id="reason"></h1>
+<canvas id="charcanvas" width="256" height="256"></canvas>
+<a href="/clearAvatar">Clear</a>

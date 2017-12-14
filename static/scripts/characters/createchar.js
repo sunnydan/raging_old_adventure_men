@@ -1,6 +1,3 @@
-// var selectLayer;
-var drawRoom;
-
 function loadCharSheetCanvas() {
     var currentlayer;
     var currentproperties;
@@ -28,8 +25,6 @@ function loadCharSheetCanvas() {
     var left = document.getElementById("left");
     var right = document.getElementById("right");
     var charcanvas = document.getElementById("charcanvas");
-
-    var makeAvatar;
 
     // pickerctx.drawImage(Charsheet.imageObj,0,0)
     //Draw all sprites by all charsprites
@@ -63,9 +58,7 @@ function loadCharSheetCanvas() {
 
         //Filter selection's layer
         //Bases: [0->3,0->1]
-        console.log("Is torso?", (tileX > 5 && tileX < 18) && (tileY < 10))
         if(tileX<2 && tileY<4){
-            console.log("Base layer")
             avatar.base = allSprites[tileX][tileY];
             avatar.base.x = 0;
             avatar.base.y = 0;
@@ -171,6 +164,7 @@ function loadCharSheetCanvas() {
         }
         //Draw new Avatar
         console.log(avatar)
-        avatar.makeAvatar(charcanvas)
+        let ctx = charcanvas.getContext("2d");
+        avatar.makeAvatar(ctx)
     }
 }
