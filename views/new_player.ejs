@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html> -->
+<head>
+    <title>New Avatar</title>
+    <script src="scripts/mechanics/Base.js"></script>
+    <script src="scripts/mechanics/entities.js"></script>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="scripts/rooms/tile.js"></script>
+    <script src="scripts/rooms/room.js"></script>
+    <script src="scripts/sprites/sprite.js"></script>
+    <script src="scripts/characters/charloader.js"></script>
+    <script src="scripts/characters/charsheet.js"></script>
+    <script src="scripts/characters/character_gen.js"></script>
+    <script src="scripts/characters/avatar.js"></script>
+    <link href="styles/multiple-select.css" rel="stylesheet" />
+    <link href="styles/new_player.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header style="display: flex;">
+        <a href="/">Back</a>
+        <h1 style="margin: 0;">Choose Your Reason for ROAMing and Appearance</h1>
+    </header>
+    <div id="main">
+        <div>
+            <form action="/avatars" method="post">
+                <div>Your reason for being angry
+                    <input type="text" name="name" id="name">
+                </div>
+                <!-- Gender -->
+                <div>
+                    Race:
+                    <select name="race" id="race">
+                        <%for(let i=0;i<races.length;i++){%>
+                            <option value="<%=races[i]%>"><%=races[i]%></option>
+                        <%}%>
+                    </select>
+                    Gender:
+                    <select name="gender" id="gender">
+                        <%for(let i=0;i<gender.length;i++){%>
+                            <option value="<%=gender[i]%>"><%=gender[i]%></option>
+                        <%}%>
+                    </select>
+                </div>
+                <div>
+                <!-- Hair Color -->
+                    Hair Color:
+                    <select name="hair_color" id="hair_color">
+                        <%for(let i=0;i<hair_colors.length;i++){%>
+                            <option value="<%=hair_colors[i]%>"><%=hair_colors[i]%></option>
+                        <%}%>
+                    </select>
+                    <!-- Hair Style -->
+                    Hair Style:
+                    <select name="hair_style" id="hair_style">
+                        <!-- <option value="undefined">Select</option> -->
+                        <%for(let i=0;i<hair_styles.length;i++){%>
+                            <option value="<%=hair_styles[i]%>">
+                                <%=hair_styles[i]%>
+                            </option>
+                            <%}%>
+                    </select>
+                </div>
+                <div>
+                <!-- Beard -->
+                    Beard: 
+                    <select name="beard" id="beard">
+                        <option value="">Select</option>
+                        <%for(let i=0;i<beards.length;i++){%>
+                            <option value="<%=beards[i]%>"><%=beards[i]%></option>
+                        <%}%>
+                    </select>
+                </div>
+                <input type="hidden" name="allSprites" id="allSprites">
+                <div>
+                <input type="submit" value="Save Avatar's Apperance">
+                </div>
+            </form>
+            <button id="clear">Clear Avatar</button>
+        </div>
+        <canvas id="charcanvas" width="256" height="256"></canvas>
+    </div>
+</body>

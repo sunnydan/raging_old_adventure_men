@@ -7,10 +7,7 @@ body div {
     margin-bottom: 1px;
     margin-top: 1px;
 }
-#undobtn, #redobtn {
-    width: 10%;
-}
-#fetchbtn, #clearbtn, #fillbtn {
+#clearbtn {
     width: 20%;
 }
 #charcanvas {

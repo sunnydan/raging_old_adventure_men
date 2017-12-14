@@ -1,12 +1,5 @@
-// var citySheet;
-// var dungeonSheet;
-// var indoorSheet;
-// var rogueSheet;
 var allSprites;
 var charSheet;
-
-// var PLAYER_SHEET;
-
 window.onload = () => {
     // rogueSheet = new Spritesheet("/resources/sprites/tiles/roguelikeSheet_transparent.png", 16, 16, 1, 1, 57, 31);
     // dungeonSheet = new Spritesheet("/resources/sprites/tiles/roguelikeDungeon_transparent.png", 16, 16, 1, 1, 29, 18);
@@ -31,10 +24,5 @@ function makeCharSprites() {
             allSprites[x].push(new Sprite(charSheet, x, y, null, null));
         }
     }
-    // console.log(allSprites[0][0])
-    //Races: [0->1,0->3]
-    //Gender: 
-        //male: [0,0->3]
-        //female: [1,0->3]
     loadCharSheetCanvas();
 }
