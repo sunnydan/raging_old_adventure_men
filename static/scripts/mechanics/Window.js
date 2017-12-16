@@ -35,12 +35,18 @@ class Window{
 	}
 
 	tick(t){
-		entities.tick(t);
+		if(!game.paused){entities.tick(t);}
+		// Passes Delta
+		instance.call("Tick",t);
 	}
 
 	render(){
 		this.center();
 		this.clear();
+
 		entities.render(this.context);
+
+		// Passes canvas context.
+		instance.call("Render",this.context);
 	}
 }

@@ -1,8 +1,10 @@
+const TITLE="R.O.A.M.";
 var citySheet;
 var dungeonSheet;
 var indoorSheet;
 var rogueSheet;
 var allSprites;
+var game;
 
 window.onload = () => {
     rogueSheet = new Spritesheet("/resources/sprites/tiles/roguelikeSheet_transparent.png", 16, 16, 1, 1, 57, 31);
@@ -13,15 +15,15 @@ window.onload = () => {
     // XML
     // util.loadXML("/resources/sprites/characters/alienBeige.xml",(data)=>{PLAYER_SHEET=data;});
 
+    // Leave this here for now please.
     setTimeout(() => {
         try {
-            let game = new Game(512, 512);
+            game = new Game(512, 512);
             game.start();
         } catch(err) {
-
+            console.log("Failed to load assets:",err);
         }
-    }, 32);
-
+    },32);
 }
 
 function makeAllSprites() {

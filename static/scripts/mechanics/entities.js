@@ -10,6 +10,8 @@ var entities = {
             if(a != b && util.AABB(a,b)){
                 a.collide(b);
                 b.collide(a);
+                // Passes the two entities that collided.
+                instance.call("OnCollide","ROAM-OnCollide",a,b);
             }
         }
     },

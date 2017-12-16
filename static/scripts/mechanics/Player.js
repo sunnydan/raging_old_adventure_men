@@ -27,7 +27,7 @@ class Player extends NPC{
 			this.yDir = DIR_IDLE;
 		}
 
-		//TODO: Mouse Based / Directional aiming. This was here for testing.
+		//TODO: Mouse Based / Directional aiming.
 	}
 
 	interact(){
@@ -40,6 +40,9 @@ class Player extends NPC{
 			if(ent != null && ent.canInteract) ent.onInteract(this); // Fire NPC's interact event
 
 			this.interacting = true;
+			
+			// Passes the two entities that interacted.
+			instance.call("OnInteract","ROAM-OnInteract",this,ent);
 		}else if(!input.keyDown("e") && this.interacting){
 			this.interacting = false;
 		}
