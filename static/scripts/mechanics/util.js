@@ -105,3 +105,8 @@ var util = {
 		context.fillText(line, x, y);
 	}
 };
+
+// Get amount of keys an object contains.
+Object.prototype.size = function(){
+	return Object.keys(this).length;
+};
