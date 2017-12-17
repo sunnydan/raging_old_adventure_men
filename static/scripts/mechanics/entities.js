@@ -7,7 +7,7 @@ var entities = {
         for(var k=0;k<entities.active.length;k++){
             let b = entities.active[k];
 
-            if(a != b && util.AABB(a,b)){
+            if(a != b && util.AABB(a,b) && a.collide && b.collide){
                 a.collide(b);
                 b.collide(a);
                 // Passes the two entities that collided.
@@ -24,8 +24,10 @@ var entities = {
 
 	tick(delta){
 		for (let i = 0; i < entities.active.length;i++){
-			entities.active[i].tick(delta);
-			entities.collide(entities.active[i]);
+			if(entities.active[i].tick){
+				entities.active[i].tick(delta);
+				entities.collide(entities.active[i]);
+			}
 		}
 	},
 }

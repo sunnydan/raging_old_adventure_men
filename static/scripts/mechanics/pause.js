@@ -7,22 +7,16 @@ var pause = {
 		["Option2",false],
 	],
 
-	// tick:(str,t)=>{
-	// 	if(game.paused){
-			// TODO: Add pause menu options like fullscreen.
-	// 	}
-	// },
-
 	scroll:function(str,key){
 		if(!game.paused){return;}
 
-		if(key=="s"||key=="ArrowDown"){
+		if(key=="s" || key=="ArrowDown"){
 			if(pause.active < pause.options.length-1){pause.active++;
 			}else{pause.active=0;}
-		}else if(key=="w"||key=="ArrowUp"){
+		}else if(key=="w" || key=="ArrowUp"){
 			if(pause.active <= 0){pause.active=pause.options.length-1;}
 			else{pause.active--;}			
-		}else if(key==" "||key=="Enter"||key=="e"){ // Toggle Option
+		}else if(key==" " || key=="Enter"||key=="e"){ // Toggle Option
 			pause.options[pause.active][1] = !pause.options[pause.active][1];
 		}
 	},

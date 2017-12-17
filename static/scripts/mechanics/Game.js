@@ -9,9 +9,13 @@ class Game{
 	}
 
 	start(){
-		let npc  = new NPC(rogueSheet,8,0,480,480);
-		let pl   = new Player(rogueSheet,7,0,512,512);
+		// let npc  = new NPC(rogueSheet,8,0,480,480);
+		// let pl   = new Player(rogueSheet,7,0,512,512);
+		let menu = gui.create("Menu");
 
+		console.log(gui.active);
+
+		// console.log(entities.active);
 		this.run(this);
 	}
 

@@ -11,19 +11,19 @@ class Player extends NPC{
 	}
 
 	move(dt){
-		if(input.keyDown("a")){
+		if(input.keyDown("a") || input.keyDown("ArrowLeft")){
 			this.xDir = DIR_LEFT;
-		}else if(input.keyDown("d")){
+		}else if(input.keyDown("d") || input.keyDown("ArrowRight")){
 			this.xDir = DIR_RIGHT;
-		}else if(!input.keyDown("a" && !input.keyDown("d"))){
+		}else if(!input.keyDown("a") && !input.keyDown("d") && !input.keyDown("ArrowLeft") && !input.keyDown("ArrowRight")){
 			this.xDir = DIR_IDLE;
 		}
 
-		if(input.keyDown("w")){
+		if(input.keyDown("w") || input.keyDown("ArrowUp")){
 			this.yDir = DIR_UP;
-		}else if(input.keyDown("s")){
+		}else if(input.keyDown("s") || input.keyDown("ArrowDown")){
 			this.yDir = DIR_DOWN;
-		}else if(!input.keyDown("w" && !input.keyDown("s"))){
+		}else if(!input.keyDown("w") && !input.keyDown("s") && !input.keyDown("ArrowUp") && !input.keyDown("ArrowDown")){
 			this.yDir = DIR_IDLE;
 		}
 

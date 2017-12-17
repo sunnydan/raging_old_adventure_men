@@ -28,8 +28,6 @@ class Window{
 			this.canvas.style.left = winW/2-this.canvas.width/2;
 			this.canvas.style.top  = winH/2-this.canvas.height/2;
 		}
-
-		this.clear();
 	}
 
 	clear(){
@@ -38,6 +36,7 @@ class Window{
 	}
 
 	tick(t){
+		gui.tick(t);
 		if(!game.paused){entities.tick(t);}
 		// Passes Delta
 		instance.call("Tick",t);
@@ -45,8 +44,9 @@ class Window{
 
 	render(){
 		this.center();
-
+		this.clear();
 		entities.render(this.context);
+		gui.render(this.context); // Render GUI's after entities.
 		// Passes canvas context.
 		instance.call("Render",this.context);
 	}
