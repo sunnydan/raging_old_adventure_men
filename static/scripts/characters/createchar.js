@@ -30,12 +30,20 @@ function loadCharSheetCanvas() {
     //Draw all sprites by all charsprites
     for (let x = 0; x < allSprites.length; x++) {
         for (let y = 0; y < allSprites[x].length; y++) {
-            Csprite = allSprites[x][y];
+            let Csprite = allSprites[x][y];
             Csprite.x = x * (Csprite.w + 1) + 1;
             Csprite.y = y * (Csprite.h + 1) + 1;
             Csprite.render(pickerctx);
         }
     }
+    // for (let x = 0; x < allSpritesXL.length; x++) {
+    //     for (let y = 0; y < allSpritesXL[x].length; y++) {
+    //         let Csprite = allSpritesXL[x][y];
+    //         Csprite.x = x * (Csprite.w + 1*8) + 1*8;
+    //         Csprite.y = y * (Csprite.h + 1*8) + 1*8;
+    //         Csprite.render(pickerctx);
+    //     }
+    // }
 
     //clear Avatar
     var clearbtn = document.getElementById("clear");
@@ -68,7 +76,7 @@ function loadCharSheetCanvas() {
         //Filter selection's layer
         //Bases: [0->3,0->1]
         if(tileX<2 && tileY<4){
-            avatar.base = allSprites[tileX][tileY];
+            avatar.base = allSpritesXL[tileX][tileY];
             avatar.base.x = 0;
             avatar.base.y = 0;
             // tilectx = base.getContext("2d");
@@ -76,7 +84,7 @@ function loadCharSheetCanvas() {
             // avatar.base.drawImage(tilectx, 0, 0);
         }
         else if((tileX==3)&&(tileY<4 || (tileY>4 && tileY<9))){//Pants: [3,0->3 & 5->8]
-            avatar.pants = allSprites[tileX][tileY];
+            avatar.pants = allSpritesXL[tileX][tileY];
             avatar.pants.x = 0;
             avatar.pants.y = 0;
             // tilectx = pants.getContext("2d");
@@ -84,7 +92,7 @@ function loadCharSheetCanvas() {
             // avatar.pants.drawImage(tilectx, 0, 0);
         }
         else if (((tileX == 3) && (tileY == 4 || tileY == 9))||(tileX==4 &&tileY<10)){//Boots:[3,4/9] || [4,0->9]
-            avatar.boots = allSprites[tileX][tileY];
+            avatar.boots = allSpritesXL[tileX][tileY];
             avatar.boots.x = 0;
             avatar.boots.y = 0;
             // tilectx = boots.getContext("2d");
@@ -92,7 +100,7 @@ function loadCharSheetCanvas() {
             // avatar.boots.drawImage(tilectx, 0, 0);
         }
         else if ((tileX > 5 && tileX < 18) && (tileY < 10)) {//torso [6->17,0->9]
-            avatar.torso = allSprites[tileX][tileY];
+            avatar.torso = allSpritesXL[tileX][tileY];
             avatar.torso.x = 0;
             avatar.torso.y = 0;
             // tilectx = torso.getContext("2d");
@@ -103,14 +111,14 @@ function loadCharSheetCanvas() {
             //hair [19->26,0->2&&4-6] || [19->22,8-10]
             //beard [,3/7] || [,10]
             if (tileY == 10) {
-                avatar.beard = allSprites[tileX][tileY];
+                avatar.beard = allSpritesXL[tileX][tileY];
                 avatar.beard.x = 0;
                 avatar.beard.y = 0;
                 // tilectx = beard.getContext("2d");
                 // tilectx.clearRect(0, 0, 16,16);
                 // avatar.beard.drawImage(tilectx, 0, 0);
             } else {
-                avatar.hair = allSprites[tileX][tileY];
+                avatar.hair = allSpritesXL[tileX][tileY];
                 avatar.hair.x = 0;
                 avatar.hair.y = 0;
                 // tilectx = hair.getContext("2d");
@@ -121,14 +129,14 @@ function loadCharSheetCanvas() {
         else if ((tileX > 18 && tileX < 27) && tileY<8){//(()&&())||((tileX>18 && tileX<23)&&(tileY>7&&tileY<11))) {
             //hair [19->26,0->2&&4-6] || [19->22,8-10]
             if (tileY == 3 || tileY ==7){
-                avatar.beard = allSprites[tileX][tileY];
+                avatar.beard = allSpritesXL[tileX][tileY];
                 avatar.beard.x = 0;
                 avatar.beard.y = 0;
                 // tilectx = beard.getContext("2d");
                 // tilectx.clearRect(0, 0, 16,16);
                 // avatar.beard.drawImage(tilectx, 0, 0);
             }else{
-                avatar.hair = allSprites[tileX][tileY];
+                avatar.hair = allSpritesXL[tileX][tileY];
                 avatar.hair.x = 0;
                 avatar.hair.y = 0;
                 // tilectx = hair.getContext("2d");
@@ -137,7 +145,7 @@ function loadCharSheetCanvas() {
             }
         }//hair
         else if ((tileX > 27 && tileX < 32) && (tileY < 9)){//hat [28->31,0-8]
-            avatar.hat = allSprites[tileX][tileY];
+            avatar.hat = allSpritesXL[tileX][tileY];
             avatar.hat.x = 0;
             avatar.hat.y = 0;
             // tilectx = hat.getContext("2d");
@@ -145,7 +153,7 @@ function loadCharSheetCanvas() {
             // avatar.hat.drawImage(tilectx, 0, 0);
         }
         else if ((tileX > 32 && tileX < 41)&& (tileY < 9)) {//left [33-40,0-8]
-            avatar.left = allSprites[tileX][tileY];
+            avatar.left = allSpritesXL[tileX][tileY];
             avatar.left.x = 0;
             avatar.left.y = 0;
             // tilectx = left.getContext("2d");
@@ -153,7 +161,7 @@ function loadCharSheetCanvas() {
             // avatar.left.drawImage(tilectx, 0, 0);
         }//left
         else if ((tileX > 41 && tileX < 52) && (tileY < 10)) {//right [42-51,0-9]
-            avatar.right = allSprites[tileX][tileY];
+            avatar.right = allSpritesXL[tileX][tileY];
             avatar.right.x = 0;
             avatar.right.y = 0;
             // tilectx = right.getContext("2d");
@@ -164,7 +172,7 @@ function loadCharSheetCanvas() {
             avatar.left = undefined;
             // tilectx = left.getContext("2d");
             // tilectx.clearRect(0, 0, 16, 16);
-            avatar.right = allSprites[tileX][tileY];
+            avatar.right = allSpritesXL[tileX][tileY];
             avatar.right.x = 0;
             avatar.right.y = 0;
             // tilectx = right.getContext("2d");
@@ -174,6 +182,6 @@ function loadCharSheetCanvas() {
         //Draw new Avatar
         console.log(avatar)
         let ctx = charcanvas.getContext("2d");
-        avatar.makeAvatar(ctx)
+        avatar.makeAvatar(ctx, 0, 0, 128,128)
     }
 }
