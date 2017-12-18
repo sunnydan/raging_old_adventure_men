@@ -42,7 +42,15 @@ function loadCharSheetCanvas() {
     clearbtn.addEventListener('mousedown', function (e) {
         avatar = new AvatarSprite();
     })
-
+    window.addEventListener('mousedown', function (e) {
+        if (e.which == 1) {
+            // if (canvas == pickercanvas) {
+            let tileX = Math.floor((e.layerX) / 17);
+            let tileY = Math.floor(e.layerY / 17);
+            // console.log(`x:${e.layerX},y:${e.layerY}`)
+            console.log(`window= x:${e.layerX} y:${e.layerY}`)
+        }
+    })
     pickercanvas.addEventListener('mousedown', function (e) {
         if (e.which == 1) {
             pickTile(e)//"left", pickercanvas, e);
@@ -51,10 +59,10 @@ function loadCharSheetCanvas() {
     });
     function pickTile(e) {//click, canvas, e) {
         // if (canvas == pickercanvas) {
-        var tileX = Math.floor((e.layerX) / 17);
-        var tileY = Math.floor(e.layerY / 17);
+        let tileX = Math.floor((e.layerX) / 17);
+        let tileY = Math.floor(e.layerY / 17);
         // console.log(`x:${e.layerX},y:${e.layerY}`)
-        console.log(`row:${tileX} column:${tileY}`)
+        console.log(`row:${e.layerX} column:${e.layerY}`)
 
         //Filter selection's layer
         //Bases: [0->3,0->1]
