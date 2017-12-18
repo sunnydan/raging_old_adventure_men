@@ -51,11 +51,8 @@ class Button extends Panel{
 			c.fillStyle=this.hoverColor;			
 			c.fillRect(this.x,this.y,this.w,this.h);
 		}
-		// }else{
-		// 	c.fillStyle=this.color;
-		// }
 
-		c.fillStyle="#ffffff";
+		c.fillStyle=this.color;
 		c.font="16px Arial";
 		c.fillText(this.text,this.x+10,this.y+22);
 	}

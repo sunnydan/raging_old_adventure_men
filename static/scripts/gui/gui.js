@@ -8,19 +8,8 @@ var gui = {
 
 	create:function(pnl,parent){
 		if(typeof(pnl)!="string" || !gui.types[pnl]){console.log("Non-existant GUI type: ",pnl); return;}
-		// let valid = false;
 		
-		if(parent){
-			// for(let i=0;i<gui.types.length;i++){
-			// 	console.log(gui.types[i]);
-
-			// 	if(gui.types[i].constructor.name == parent.constructor.name){
-			// 		valid=true;
-			// 		break;
-			// 	}	
-			// }
-			// if(!valid){console.log("Invalid Parent GUI:",parent.constructor.name); return};
-			
+		if(parent){			
 			let elem = new gui.types[pnl](true);
 			elem.x=parent.x;
 			elem.y=parent.y;

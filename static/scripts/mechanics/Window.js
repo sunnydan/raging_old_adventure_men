@@ -17,17 +17,17 @@ class Window{
 			|| document.documentElement.clientHeight
 			|| document.body.clientHeight;
 		// If fullscreen
-		if(pause.options[0][1]){
+		// if(pause.options[0][1]){
 			this.canvas.width=winW;
 			this.canvas.height=winH;
 			this.canvas.style.left=0;
 			this.canvas.style.top=0;
-		}else{
-			this.canvas.width=this.w;
-			this.canvas.height=this.h;
-			this.canvas.style.left = winW/2-this.canvas.width/2;
-			this.canvas.style.top  = winH/2-this.canvas.height/2;
-		}
+		// }else{
+		// 	this.canvas.width=this.w;
+		// 	this.canvas.height=this.h;
+		// 	this.canvas.style.left = winW/2-this.canvas.width/2;
+		// 	this.canvas.style.top  = winH/2-this.canvas.height/2;
+		// }
 	}
 
 	clear(){

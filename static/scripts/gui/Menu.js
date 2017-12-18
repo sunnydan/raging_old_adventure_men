@@ -2,7 +2,6 @@ class Menu extends Panel{
 	constructor(isChild){
 		super(isChild);
 		this.init();
-		// There will be way more gui elements for inventory later. For now, this does what its supposed to.
 		instance.hook("OnKeyUp","ROAM-Inventory",(str,key)=>{this.bind(key);});
 	}
 
@@ -11,25 +10,31 @@ class Menu extends Panel{
 	}
 
 	init(){
-		this.title="Press Q to toggle.";
-		this.navColor="rgb(32,32,32)";
+		this.showNav=true;
+		this.showTitle=true;
+		let par = this;
 
 		let close = gui.create("Button",this);
-		close.x=this.x+this.w-close.w-1; // Top right
-		close.y+=1;
-		close.onClick=(x,y)=>{
-			this.toggle(); // Hide this Menu.
+		close.text="x";
+		close.onClick=(x,y)=>{this.toggle();}
+		close.onTick=(t)=>{
+			close.x=par.x+par.w-close.w-1;
+			close.y=par.y+1;
 		}
-		// These are fake me out buttons, they dont do anything. Unless you want em' to.
+
 		let max = gui.create("Button",this);
-		max.x=close.x-max.w-1;
-		max.y=close.y;
-		max.text="□";
+		max.text="[]";
+		max.onTick=(t)=>{
+			max.x=close.x-max.w-1;
+			max.y=par.y+1;
+		}
 
 		let min = gui.create("Button",this);
-		min.x=max.x-min.w-1;
-		min.y=max.y;
 		min.text="-";
+		min.onTick=(t)=>{
+			min.x=max.x-min.w-1;
+			min.y=par.y+1;
+		}
 	}
 
 	tick(t){
@@ -39,18 +44,6 @@ class Menu extends Panel{
 
 	render(c){
 		if(!this.visible){return;}
-		c.fillStyle=this.navColor;
-		c.fillRect(this.x,this.y,this.w,this.h);
-
-		c.fillStyle=this.color;
-		c.fillRect(this.x+1,this.y+1,this.w-2,this.h-2);
-
-		c.fillStyle=this.navColor;
-		c.fillRect(this.x+1,this.y+1,this.w-2,32);
-
-		c.fillStyle="#ffffff";
-		c.font="16px Arial";
-		c.fillText(this.title,this.x+4,this.y+22);
 		super.render(c);
 	}
 }
