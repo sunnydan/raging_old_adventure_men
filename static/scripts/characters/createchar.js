@@ -42,15 +42,6 @@ function loadCharSheetCanvas() {
     clearbtn.addEventListener('mousedown', function (e) {
         avatar = new AvatarSprite();
     })
-    window.addEventListener('mousedown', function (e) {
-        if (e.which == 1) {
-            // if (canvas == pickercanvas) {
-            let tileX = Math.floor((e.layerX) / 17);
-            let tileY = Math.floor(e.layerY / 17);
-            // console.log(`x:${e.layerX},y:${e.layerY}`)
-            console.log(`window= x:${e.layerX} y:${e.layerY}`)
-        }
-    })
     pickercanvas.addEventListener('mousedown', function (e) {
         if (e.which == 1) {
             pickTile(e)//"left", pickercanvas, e);
@@ -59,10 +50,20 @@ function loadCharSheetCanvas() {
     });
     function pickTile(e) {//click, canvas, e) {
         // if (canvas == pickercanvas) {
-        let tileX = Math.floor((e.layerX) / 17);
-        let tileY = Math.floor(e.layerY / 17);
-        // console.log(`x:${e.layerX},y:${e.layerY}`)
-        console.log(`row:${e.layerX} column:${e.layerY}`)
+        // findOffset();
+        pickerRect = pickercanvas.getBoundingClientRect()
+        // console.log(`Picker:[${pickerRect.left},${pickerRect.top}]`);
+        // console.log(`Page= x:${e.pageX},y:${e.pageY}`)
+        let clickX = Math.floor(e.pageX) - Math.floor(pickerRect.left);
+        let clickY = Math.floor(e.pageY) - Math.floor(pickerRect.top);
+        // console.log(`Click= x:${clickX} y:${clickY}`)
+        // console.log(`Array= x:${Math.floor(clickX/17)} y:${Math.floor(clickY/17)}`)
+        
+        let tileX = Math.floor(clickX / 17);
+        let tileY = Math.floor(clickY / 17);
+        console.log(`Layer= x:${e.layerX},y:${e.layerY}`)
+        
+        // console.log(`row:${tileX} column:${tileY}`)
 
         //Filter selection's layer
         //Bases: [0->3,0->1]
