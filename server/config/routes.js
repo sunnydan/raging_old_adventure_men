@@ -1,6 +1,7 @@
 // var mongoose = require('mongoose');
 var path = require('path');
 var session = require('express-session');
+var avatarLib = require("../../avatarLib.js");
 // add models and controller vars
 
 module.exports = function(app){
