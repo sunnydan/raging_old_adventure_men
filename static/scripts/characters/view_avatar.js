@@ -12,7 +12,7 @@ function loadCharSheetCanvas() {
         var charcanvas = document.getElementById("charcanvas");
         var tilectx = charcanvas.getContext("2d");
         //Uses new method to blow up the avatar chosen
-        avatar.avatarSprite.makeAvatar(tilectx,0,0,charcanvas.width,charcanvas.height);
+        avatar.avatarSprite.makeAvatar(tilectx, 0,0, charcanvas.width, charcanvas.height);
     }
     else{
         console.log("No Avatar")

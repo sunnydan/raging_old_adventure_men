@@ -9,17 +9,17 @@ function AvatarSprite() {
     this.beard;
     this.left;
     this.right;
-    this.makeAvatar = (ctx, x = 0, y = 0, newW = allSprites[0][0].w, newH = allSprites[0][0].h)=>{
+    this.makeAvatar = (ctx, x = 0, y = 0, newW = allSpritesXL[0][0].w, newH = allSpritesXL[0][0].h)=>{
         if (!(ctx instanceof CanvasRenderingContext2D)){
             console.log("Not a canvas rendering instance");return;
         }
         
-        ctx.clearRect(0, 0, location.width, location.height)
+        // ctx.clearRect(0, 0, location.width, location.height);
         if (this.base) this.base.render(ctx,x,y,newW,newH);
         if (this.pants) this.pants.render(ctx,x,y,newW,newH);
         if (this.boots) this.boots.render(ctx,x,y,newW,newH);
         if (this.torso) this.torso.render(ctx,x,y,newW,newH);
-        if (this.hair) this.hair.render(ctx,x,y,newW,newH);
+        if (this.hair && !this.hat) this.hair.render(ctx,x,y,newW,newH);
         if (this.hat) this.hat.render(ctx,x,y,newW,newH);
         if (this.beard) this.beard.render(ctx,x,y,newW,newH);
         if (this.left) this.left.render(ctx,x,y,newW,newH);

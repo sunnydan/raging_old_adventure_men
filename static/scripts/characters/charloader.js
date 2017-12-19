@@ -7,7 +7,7 @@ window.onload = () => {
     // indoorSheet = new Spritesheet("/resources/sprites/tiles/roguelikeIndoor_transparent.png", 16, 16, 1, 1, 27, 18);
 	// citySheet = new Spritesheet("/resources/sprites/tiles/roguelikeCity_transparent.png", 16, 16, 1, 1, 37, 28);
     charSheet = new Charsheet("/resources/sprites/tiles/roguelikeChar_transparent.png", 16, 16, 1, 1, 54, 12);
-    charXLSheet = new Charsheet("/resources/sprites/tiles/char_largerx8.png", 16*8, 16*8, 1*8, 1*8, 54, 12);
+    charXLSheet = new Charsheet("/resources/sprites/tiles/char_larger.png", 16*8, 16*8, 1*8, 1*8, 54, 12);
     //XML
 	
 	// util.loadXML("/resources/sprites/characters/alienBeige.xml",(data)=>{PLAYER_SHEET=data;});
