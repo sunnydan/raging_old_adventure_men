@@ -180,8 +180,14 @@ function loadSpriteSheetCanvas() {
 
     function pickTile(click, canvas, e) {
         if (canvas == pickercanvas) {
-            var tileX = Math.floor(e.layerX / 17);
-            var tileY = Math.floor(e.layerY / 17);
+            pickerRect = pickercanvas.getBoundingClientRect()
+            // console.log(`Picker:[${pickerRect.left},${pickerRect.top}]`);
+            // console.log(`Page= x:${e.pageX},y:${e.pageY}`)
+            //subtract clicked page location with the start of the picker location
+            let clickX = Math.floor(e.pageX) - Math.floor(pickerRect.left);
+            let clickY = Math.floor(e.pageY) - Math.floor(pickerRect.top);
+            let tileX = Math.floor(clickX / 17);
+            let tileY = Math.floor(clickY / 17);
             if (click == "left") {
                 tilectx1.clearRect(0, 0, 16, 16);
                 selectedSprite1 = allSprites[tileX][tileY];
