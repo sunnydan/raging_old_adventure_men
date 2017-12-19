@@ -9,17 +9,17 @@ function AvatarSprite() {
     this.beard;
     this.left;
     this.right;
-    this.makeAvatar = (ctx, x = 0, y = 0, newW = allSprites[0][0].w, newH = allSprites[0][0].h)=>{
+    this.makeAvatar = (ctx, x = 0, y = 0, newW = allSpritesXL[0][0].w, newH = allSpritesXL[0][0].h)=>{
         if (!(ctx instanceof CanvasRenderingContext2D)){
             console.log("Not a canvas rendering instance");return;
         }
         
-        ctx.clearRect(0, 0, location.width, location.height)
+        // ctx.clearRect(0, 0, location.width, location.height);
         if (this.base) this.base.render(ctx,x,y,newW,newH);
         if (this.pants) this.pants.render(ctx,x,y,newW,newH);
         if (this.boots) this.boots.render(ctx,x,y,newW,newH);
         if (this.torso) this.torso.render(ctx,x,y,newW,newH);
-        if (this.hair) this.hair.render(ctx,x,y,newW,newH);
+        if (this.hair && !this.hat) this.hair.render(ctx,x,y,newW,newH);
         if (this.hat) this.hat.render(ctx,x,y,newW,newH);
         if (this.beard) this.beard.render(ctx,x,y,newW,newH);
         if (this.left) this.left.render(ctx,x,y,newW,newH);
@@ -94,15 +94,15 @@ class Avatar {
         this.pants;
         this.boots;
         this.hat;
-        this.weapon;
-        this.shield;
+        this.weapon;//left
+        this.shield;//right
     }
     setBaseLayer() {
         //Validate options are present
         for (let i = 0; i < bases.length; i++) {
             if (this.race === bases[i].race && this.gender == bases[i].gender) {
                 // console.log(bases[i])
-                this.avatarSprite.base = allSprites[bases[i].x][bases[i].y];//new Sprite(charSheet, bases[i].x, bases[i].y,0,0);
+                this.avatarSprite.base = allSpritesXL[bases[i].x][bases[i].y];//new Sprite(charSheet, bases[i].x, bases[i].y,0,0);
             }
         }
     }
@@ -110,7 +110,7 @@ class Avatar {
         //Validate options are present
         for (let i = 0; i < hair.length; i++) {
             if (this.hair_style === hair[i].style && this.hair_color == hair[i].color) {
-                this.avatarSprite.hair = allSprites[hair[i].x][hair[i].y];//new Sprite(charSheet, hair[i].x, hair[i].y,0,0);
+                this.avatarSprite.hair = allSpritesXL[hair[i].x][hair[i].y];//new Sprite(charSheet, hair[i].x, hair[i].y,0,0);
                 // console.log(hair[i])
             }
         }
@@ -119,7 +119,7 @@ class Avatar {
         //Validate presence of beard in array
         for (let i = 0; i < beard_layer.length; i++) {
             if (this.beard === beard_layer[i].beard && this.hair_color == beard_layer[i].color) {
-                this.avatarSprite.beard = allSprites[beard_layer[i].x][beard_layer[i].y];//new Sprite(charSheet, beard_layer[i].x, beard_layer[i].y, 0, 0);
+                this.avatarSprite.beard = allSpritesXL[beard_layer[i].x][beard_layer[i].y];//new Sprite(charSheet, beard_layer[i].x, beard_layer[i].y, 0, 0);
                 // console.log(beard_layer[i])
             }
         }
