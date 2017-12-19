@@ -103,5 +103,21 @@ var util = {
 			}
 		}
 		context.fillText(line, x, y);
-	}
+	},
+
+	winX(){return game.window.canvas.style.left;},
+	winY(){return game.window.canvas.style.top;},
+	winW(){return game.window.canvas.width;},
+	winH(){return game.window.canvas.height;},
+	winDim(){return [
+		game.window.canvas.style.left,
+		game.window.canvas.style.top,
+		game.window.canvas.width,
+		game.window.canvas.height
+	];},
+};
+
+// Get amount of keys an object contains.
+Object.prototype.size = function(){
+	return Object.keys(this).length;
 };

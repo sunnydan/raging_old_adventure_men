@@ -8,7 +8,6 @@ function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap,
     this.spritesdown = spritesdown;
     this.imageObj = new Image();
     this.sprites = [];
-    // this.xml = [];
 
     this.imageObj.onload = () => {
         for (let x = 0; x < this.spritesacross; x++) {
@@ -32,15 +31,18 @@ function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap,
             }
         }
         this.ready = true;
-        if (citySheet.ready && dungeonSheet.ready && indoorSheet.ready && rogueSheet.ready) {
-            try {
-                let game = new Game(512, 512);
-                game.start();
-            }
-            catch (err) {
-                makeAllSprites();
-            }
-        }
+
+        // Lets do this on window.onload()?
+
+        // if (citySheet.ready && dungeonSheet.ready && indoorSheet.ready && rogueSheet.ready) {
+        //     try {
+        //         let game = new Game(512, 512);
+        //         game.start();
+        //     }
+        //     catch (err) {
+        //         makeAllSprites();
+        //     }
+        // }
     }
 
     this.imageObj.src = src;
