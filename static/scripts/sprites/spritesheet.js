@@ -20,7 +20,8 @@ function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap,
                         cX: x * (spritewidth + verticalgap),
                         cY: y * (spriteheight + horizontalgap),
                         w: spritewidth,
-                        h: spriteheight
+                        h: spriteheight,
+                        sheet:this.imageObj
                     }
                     // new Sprite(
                     //     this.imageObj,

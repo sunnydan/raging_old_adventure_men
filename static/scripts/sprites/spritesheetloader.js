@@ -40,6 +40,7 @@ function makeAllSprites() {
             allSprites[x].push(new Sprite(citySheet, x, y, null, null));
         }
     }
+    
     try {
         loadSpriteSheetCanvas();
     } catch(err) {

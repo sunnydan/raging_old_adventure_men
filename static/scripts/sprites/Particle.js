@@ -1,11 +1,12 @@
 class Particle{
-	constructor(parent){ // Allow for setting a sprite.
+	constructor(parent,sprite){ // Allow for setting a sprite.
 		if(!parent){return undefined;}
 		if(parent.constructor.name != "Emitter"){return undefined;}
 
 		this.id=parent.particles.length;
 		this.class=this.constructor.name;
 		this.parent=parent;
+		if(sprite){this.sprite=sprite;}
 		this.x=parent.x;
 		this.y=parent.y;
 		this.xV=0;
@@ -43,10 +44,16 @@ class Particle{
 	}
 
 	render(c){
-		c.beginPath();
-		c.fillStyle=this.color;
-		c.arc(this.x,this.y,this.startSize,0,Math.PI*2,true);
-		c.closePath();
-		c.fill();
+		if(this.sprite){
+			// c.drawImage(this.sprite.sheet, this.sprite.cX, this.sprite.cY, this.sprite.w, this.sprite.h);
+			c.drawImage(this.sprite.sheet, this.sprite.cX, this.sprite.cY,this.sprite.w,this.sprite.h,this.x,this.y,this.sprite.w,this.sprite.h);
+
+		}else{
+			c.beginPath();
+			c.fillStyle=this.color;
+			c.arc(this.x,this.y,this.startSize,0,Math.PI*2,true);
+			c.closePath();
+			c.fill();
+		}
 	}
 }

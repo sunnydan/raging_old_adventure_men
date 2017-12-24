@@ -7,6 +7,7 @@ class PauseMenu extends Panel{
 	}
 
 	init(){
+		game.paused=!game.paused;
 		this.selected=0;
 		this.color="rgba(32,32,32,.5)";
 		this.navColor="rgba(0,0,0,0)";

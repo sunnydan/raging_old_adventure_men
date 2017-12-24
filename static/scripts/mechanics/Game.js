@@ -10,13 +10,12 @@ class Game{
 
 	start(){
 		// let npc  = new NPC(rogueSheet,8,0,480,480);		
-
 		let pl = new Player(rogueSheet,7,0,512,512);
 		
 		// let menu = gui.create("Menu");
 		// menu.y = 128;
 
-		// gui.create("PauseMenu");
+		gui.create("PauseMenu");
 
 		let e = new Emitter();
 		e.x = 512;
@@ -38,7 +37,7 @@ class Game{
 			p2.endSize=0;
 			p2.color="rgba("+g+","+g+","+g+","+.125+")";
 
-			let p = new Particle(e);
+			let p = new Particle(e,rogueSheet.sprites[5][5]);
 			p.gravity=-.25;
 			p.xV=util.randRange(-2,2);
 			p.yV=p2.yV;
@@ -46,6 +45,15 @@ class Game{
 			p.startSize=30;
 			p.endSize=0;
 			p.color="rgba(255,"+g+",0,"+a+")";
+
+			let p3 = new Particle(e);
+			p3.gravity=-.25;
+			p3.xV=util.randRange(-2,2);
+			p3.yV=p2.yV;
+			p3.decay=40;
+			p3.startSize=30;
+			p3.endSize=0;
+			p3.color="rgba(255,"+g+",0,"+a+")";
 		}
 		e.attach(pl);
 
