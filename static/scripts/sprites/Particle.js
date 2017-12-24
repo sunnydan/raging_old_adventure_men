@@ -1,5 +1,5 @@
 class Particle{
-	constructor(parent){
+	constructor(parent){ // Allow for setting a sprite.
 		if(!parent){return undefined;}
 		if(parent.constructor.name != "Emitter"){return undefined;}
 
@@ -11,10 +11,10 @@ class Particle{
 		this.xV=0;
 		this.yV=0;
 		this.gravity=.5;
-		this.size=10;
-		this.life=0;
-		this.decay=10;
 		this.endSize=0;
+		this.startSize=0;
+		this.life=0;
+		this.decay=50;
 		this.color="#fff";
 
 		parent.particles[this.id] = this;
@@ -26,9 +26,15 @@ class Particle{
 
 		this.yV += this.gravity;
 		this.life++;
-		// Temporary. Make a multiplier for decrementing size.
-		if(this.endSize < this.size && this.size-.5 > 0){
-			this.size -= .5;
+
+		if(this.startSize != 0){
+			if(this.endSize < 1){this.endSize=1;}
+
+			if(this.startSize > this.endSize){
+				this.startSize -= this.endSize;
+			}else{
+				this.startSize += this.endSize;
+			}
 		}
 
 		if(this.life > this.decay){
@@ -39,7 +45,7 @@ class Particle{
 	render(c){
 		c.beginPath();
 		c.fillStyle=this.color;
-		c.arc(this.x,this.y,this.size,0,Math.PI*2,true);
+		c.arc(this.x,this.y,this.startSize,0,Math.PI*2,true);
 		c.closePath();
 		c.fill();
 	}

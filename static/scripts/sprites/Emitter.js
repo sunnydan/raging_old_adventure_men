@@ -12,15 +12,15 @@ class Emitter{
 
 		entities.active.push(this);
 	}
-	// Edit particles via this callback as they're being emitted.
-	onEmit(particle){
+	// Edit / Create particles via this callback as they're being emitted / created.
+	onEmit(){
 
 	}
 
 	emit(){
 		if(util.getTime()-this.delta >= this.rate){
-			let p = new Particle(this);
-			this.onEmit(p);
+			//let p = new Particle(this);
+			this.onEmit();
 			this.delta=util.getTime();
 		}
 	}
