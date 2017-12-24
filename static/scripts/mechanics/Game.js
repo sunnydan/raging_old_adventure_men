@@ -37,23 +37,28 @@ class Game{
 			// p2.endSize=0;
 			// p2.color="rgba("+g+","+g+","+g+","+.25+")";
 
+			let c1 = util.randRange(30,147);
+			let c2 = util.randRange(0,51);
+			let c3 = util.randRange(204,255);
+
 			let q = new Particle(e);
-			q.gravity=-.125;
+			q.gravity=-.0125;
 			q.xV=util.randRange(-2,2);
 			q.yV=util.randRange(-4,4);
 			q.decay=100;
-			q.startSize=50;
+			q.startSize=100;
 			q.endSize=0;
-			q.color="rgba("+g+","+g+","+g+","+.25+")";
+			q.color="rgb("+c1+","+c2+","+c3+")";
+			// q.color="rgba("+g+","+g+","+g+","+.25+")";
 
-			let p = new Particle(e);
-			p.gravity=-.125;
-			p.xV=util.randRange(-2,2);
-			p.yV=util.randRange(-4,4);
-			p.decay=60;
-			p.startSize=50;
-			p.endSize=0;
-			p.color="rgba(255,"+g+",0,"+.5+")";
+			// let p = new Particle(e);
+			// p.gravity=-.125;
+			// p.xV=util.randRange(-2,2);
+			// p.yV=util.randRange(-4,4);
+			// p.decay=60;
+			// p.startSize=100;
+			// p.endSize=0;
+			// p.color="rgba(255,"+g+",0,"+.5+")";
 
 			// let p3 = new Particle(e);
 			// p3.gravity=-.25;

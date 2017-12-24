@@ -3,9 +3,9 @@ class Moving extends Tile{
 		super(sheet, xInd, yInd, x, y);
 		this.xV=0;
 		this.yV=0;
-		this.friction=1;
-		this.acc=100;
-		this.cap=200;
+		this.friction=.1;
+		this.acc=200;
+		this.cap=300;
 		this.xDir=0;
 		this.yDir=0;
 	}
