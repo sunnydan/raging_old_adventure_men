@@ -47,4 +47,23 @@ class Player extends NPC{
 			this.interacting = false;
 		}
 	}
+
+	// render(c){
+		// c.globalCompositeOperation = "source-over";
+		// c.fillStyle="rgba(0,0,0,1)";
+		// c.fillRect(this.x,this.y,this.w,this.h);
+		// c.globalCompositeOperation = "lighter";
+
+	// 	c.beginPath();
+
+	// 	let g = c.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.w);
+	// 	g.addColorStop(0, "white");
+	// 	g.addColorStop(0.4, "white");
+	// 	g.addColorStop(0.4, this.color);
+	// 	g.addColorStop(1, "black");
+
+	// 	c.fillStyle = g;
+	// 	c.arc(this.x+Math.sin( util.getTime()*16 )*8, this.y, this.w, Math.PI*2, false);
+	// 	c.fill();
+	// }
 }

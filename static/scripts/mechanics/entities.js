@@ -18,13 +18,14 @@ var entities = {
 
 	render(context){
 		for(let i=0;i<entities.active.length;i++){
+			if(entities.active[i] && entities.active[i].render)
 			entities.active[i].render(context);
 		}
 	},
 
 	tick(delta){
 		for (let i = 0; i < entities.active.length;i++){
-			if(entities.active[i].tick){
+			if(entities.active[i] && entities.active[i].tick){
 				entities.active[i].tick(delta);
 				entities.collide(entities.active[i]);
 			}

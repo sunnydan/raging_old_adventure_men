@@ -1,3 +1,5 @@
+var game;
+
 function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap, spritesacross, spritesdown, ) {
     this.ready = false;
     this.spritewidth = spritewidth;
@@ -34,15 +36,15 @@ function Spritesheet(src, spritewidth, spriteheight, verticalgap, horizontalgap,
 
         // Lets do this on window.onload()?
 
-        // if (citySheet.ready && dungeonSheet.ready && indoorSheet.ready && rogueSheet.ready) {
-        //     try {
-        //         let game = new Game(512, 512);
-        //         game.start();
-        //     }
-        //     catch (err) {
-        //         makeAllSprites();
-        //     }
-        // }
+        if (citySheet.ready && dungeonSheet.ready && indoorSheet.ready && rogueSheet.ready) {
+            try {
+                game = new Game(512, 512);
+                game.start();
+            }
+            catch (err) {
+                makeAllSprites();
+            }
+        }
     }
 
     this.imageObj.src = src;

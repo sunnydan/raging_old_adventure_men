@@ -1,4 +1,13 @@
 var util = {
+	lerp(a,b,t){
+		return (1-t)*a + t*b
+	},
+
+	cerp(a,b,t){ 
+		var f=(1-math.cos(t*math.pi))*.5
+		return a*(1-f)+b*f
+	},
+
 	AABB(a,b){
 		return a.x < b.x + b.w &&
 		a.x + a.w > b.x &&

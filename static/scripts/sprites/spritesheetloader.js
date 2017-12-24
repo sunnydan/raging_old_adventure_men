@@ -14,16 +14,6 @@ window.onload = () => {
 
     // XML
     // util.loadXML("/resources/sprites/characters/alienBeige.xml",(data)=>{PLAYER_SHEET=data;});
-
-    // Leave this here for now please.
-    setTimeout(() => {
-        try {
-            game = new Game(512, 512);
-            game.start();
-        } catch(err) {
-            console.log("Failed to load assets:",err);
-        }
-    },32);
 }
 
 function makeAllSprites() {
