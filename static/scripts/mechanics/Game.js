@@ -28,32 +28,41 @@ class Game{
 			let a = Math.random()*2-1;
 			if(a < 0){a=1;}
 
-			let p2 = new Particle(e);
-			p2.gravity=-.5;
-			p2.xV=util.randRange(-3,3);
-			p2.yV=util.randRange(-3,3);
-			p2.decay=60;
-			p2.startSize=30;
-			p2.endSize=0;
-			p2.color="rgba("+g+","+g+","+g+","+.125+")";
+			// let p2 = new Particle(e);
+			// p2.gravity=-.5;
+			// p2.xV=util.randRange(-3,3);
+			// p2.yV=util.randRange(-3,3);
+			// p2.decay=60;
+			// p2.startSize=30;
+			// p2.endSize=0;
+			// p2.color="rgba("+g+","+g+","+g+","+.25+")";
 
-			let p = new Particle(e,rogueSheet.sprites[5][5]);
-			p.gravity=-.25;
+			let q = new Particle(e);
+			q.gravity=-.125;
+			q.xV=util.randRange(-2,2);
+			q.yV=util.randRange(-4,4);
+			q.decay=100;
+			q.startSize=50;
+			q.endSize=0;
+			q.color="rgba("+g+","+g+","+g+","+.25+")";
+
+			let p = new Particle(e);
+			p.gravity=-.125;
 			p.xV=util.randRange(-2,2);
-			p.yV=p2.yV;
-			p.decay=40;
-			p.startSize=30;
+			p.yV=util.randRange(-4,4);
+			p.decay=60;
+			p.startSize=50;
 			p.endSize=0;
-			p.color="rgba(255,"+g+",0,"+a+")";
+			p.color="rgba(255,"+g+",0,"+.5+")";
 
-			let p3 = new Particle(e);
-			p3.gravity=-.25;
-			p3.xV=util.randRange(-2,2);
-			p3.yV=p2.yV;
-			p3.decay=40;
-			p3.startSize=30;
-			p3.endSize=0;
-			p3.color="rgba(255,"+g+",0,"+a+")";
+			// let p3 = new Particle(e);
+			// p3.gravity=-.25;
+			// p3.xV=util.randRange(-2,2);
+			// p3.yV=p2.yV;
+			// p3.decay=40;
+			// p3.startSize=30;
+			// p3.endSize=0;
+			// p3.color="rgba(255,"+g+",0,"+a+")";
 		}
 		e.attach(pl);
 

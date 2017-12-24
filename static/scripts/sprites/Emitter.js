@@ -6,7 +6,6 @@ class Emitter{
 		this.particles=[];
 		this.x=256;
 		this.y=256;
-		this.max=24;
 		this.rate=.125;
 		this.delta=util.getTime();
 
@@ -19,7 +18,6 @@ class Emitter{
 
 	emit(){
 		if(util.getTime()-this.delta >= this.rate){
-			//let p = new Particle(this);
 			this.onEmit();
 			this.delta=util.getTime();
 		}

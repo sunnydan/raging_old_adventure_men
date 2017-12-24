@@ -37,8 +37,8 @@ class Particle{
 				this.startSize += this.endSize;
 			}
 		}
-
-		if(this.life > this.decay){
+		// Delete once you cant see it, assuming particles always shrink over time.
+		if(this.life > this.decay && this.startSize <= 1){
 			delete this.parent.particles[this.id];
 		}
 	}
