@@ -1,4 +1,13 @@
 var util = {
+	lerp(a,b,t){
+		return (1-t)*a + t*b
+	},
+
+	cerp(a,b,t){ 
+		var f=(1-math.cos(t*math.pi))*.5
+		return a*(1-f)+b*f
+	},
+
 	AABB(a,b){
 		return a.x < b.x + b.w &&
 		a.x + a.w > b.x &&
@@ -103,6 +112,12 @@ var util = {
 			}
 		}
 		context.fillText(line, x, y);
+	},
+
+	randRange(min, max){
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 
 	winX(){return game.window.canvas.style.left;},

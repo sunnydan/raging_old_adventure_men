@@ -13,7 +13,7 @@ class Base{
 	}
 
 	tick(t){
-
+		
 	}
 
 	collide(ent){
